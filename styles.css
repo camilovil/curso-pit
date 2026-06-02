@@ -1633,11 +1633,16 @@ h4, .h4 {
 }
 
 @media (max-width: 768px) {
+  .doctor-photo-main {
+    aspect-ratio: 4/3;
+    max-height: 260px;
+    object-position: center 15%;
+  }
   .doctor-photo-secondary {
-    right: -12px;
-    bottom: -16px;
-    width: 44%;
-    border-width: 2px;
+    display: none;
+  }
+  .doctor-photo-wrap {
+    margin-bottom: 0;
   }
 }
 
