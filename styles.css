@@ -787,6 +787,17 @@ h4, .h4 {
   color: var(--azul);
 }
 
+.hero-price-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin-top: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
 .hero-stats {
   display: flex;
   align-items: center;

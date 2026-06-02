@@ -7,6 +7,8 @@
   <meta property="og:title" content="Curso PIT — Dr. Ricardo D. Frusso">
   <meta property="og:description" content="Aprendé Perineural Injection Treatment con el referente latinoamericano. Casos clínicos reales. Acceso permanente.">
   <title>Curso PIT · Dr. Ricardo D. Frusso</title>
+  <link rel="canonical" href="https://camilovil.github.io/curso-pit/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%232563EB'/><text y='.9em' font-size='80' font-family='sans-serif' fill='white'>P</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -81,7 +83,10 @@
     <section class="hero" id="hero">
       <!-- Foto clínica lado derecho -->
       <div class="hero-photo" aria-hidden="true">
-        <img src="img/DSC_0086.jpg" alt="" loading="eager"/>
+        <picture>
+          <source srcset="img/DSC_0086.webp" type="image/webp">
+          <img src="img/DSC_0086.jpg" alt="Dr. Frusso realizando una sesión de PIT en consultorio" loading="eager"/>
+        </picture>
       </div>
 
       <div class="hero-bg-grid" aria-hidden="true"></div>
@@ -112,6 +117,7 @@
             Ver contenido del curso
           </a>
         </div>
+        <p class="hero-price-hint" id="hero-price-hint">Acceso permanente · USD 97.99</p>
 
         <div class="hero-stats" id="hero-stats">
           <span class="hero-stat">30+ años de experiencia</span>
@@ -199,15 +205,24 @@
       <!-- Strip de fotos clínicas -->
       <div class="pit-photo-strip">
         <div class="pit-photo-item">
-          <img src="img/DSC_0086.jpg" alt="Dr. Frusso aplicando técnica PIT" loading="lazy"/>
+          <picture>
+            <source srcset="img/DSC_0086.webp" type="image/webp">
+            <img src="img/DSC_0086.jpg" alt="Dr. Frusso aplicando técnica PIT en paciente durante una sesión clínica" loading="lazy"/>
+          </picture>
           <p class="pit-photo-caption">Técnica aplicada en paciente</p>
         </div>
         <div class="pit-photo-item">
-          <img src="img/DSC_0116.jpg" alt="Inyección subcutánea — PIT" loading="lazy"/>
+          <picture>
+            <source srcset="img/DSC_0116.webp" type="image/webp">
+            <img src="img/DSC_0116.jpg" alt="Punto de inyección subcutánea en zona cervical durante tratamiento PIT" loading="lazy"/>
+          </picture>
           <p class="pit-photo-caption">Punto de inyección cervical</p>
         </div>
         <div class="pit-photo-item">
-          <img src="img/DSC_0098.jpg" alt="Anatomía del nervio periférico" loading="lazy"/>
+          <picture>
+            <source srcset="img/DSC_0098.webp" type="image/webp">
+            <img src="img/DSC_0098.jpg" alt="Mapa anatómico de nervios periféricos utilizado como referencia en el curso PIT" loading="lazy"/>
+          </picture>
           <p class="pit-photo-caption">Mapa anatómico de referencia</p>
         </div>
       </div>
@@ -435,18 +450,24 @@
         <!-- Columna izquierda: foto -->
         <div class="animate-in">
           <div class="doctor-photo-wrap">
-            <img
-              src="img/DSC_0028.jpg"
-              alt="Dr. Ricardo D. Frusso"
-              class="doctor-photo-main"
-              loading="lazy"
-            />
-            <img
-              src="img/DSC_0016.jpg"
-              alt="Dr. Frusso en congreso"
-              class="doctor-photo-secondary"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset="img/DSC_0028.webp" type="image/webp">
+              <img
+                src="img/DSC_0028.jpg"
+                alt="Dr. Ricardo D. Frusso, médico de familia y especialista en PIT, en su consultorio"
+                class="doctor-photo-main"
+                loading="lazy"
+              />
+            </picture>
+            <picture>
+              <source srcset="img/DSC_0016.webp" type="image/webp">
+              <img
+                src="img/DSC_0016.jpg"
+                alt="Dr. Frusso presentando en congreso médico internacional sobre Perineural Injection Treatment"
+                class="doctor-photo-secondary"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
 
@@ -1134,8 +1155,9 @@
       { id: 'hero-line1',    delay: 150 },
       { id: 'hero-line2',    delay: 280 },
       { id: 'hero-subtitle', delay: 430 },
-      { id: 'hero-ctas',     delay: 580 },
-      { id: 'hero-stats',    delay: 730 },
+      { id: 'hero-ctas',       delay: 580 },
+      { id: 'hero-price-hint', delay: 660 },
+      { id: 'hero-stats',      delay: 730 },
     ];
 
     heroReveal.forEach(({ id, delay }) => {
