@@ -2045,7 +2045,7 @@ h4, .h4 {
 /* === SECCIÓN: NEWSLETTER + INSTAGRAM === */
 .connect-section {
   background-color: var(--negro);
-  padding: var(--section-padding);
+  padding: clamp(48px, 6vw, 80px) clamp(24px, 6vw, 120px);
   border-top: 1px solid #1a1a1a;
 }
 
@@ -2556,7 +2556,8 @@ h4, .h4 {
 /* === SECCIÓN: FOOTER === */
 .footer {
   background-color: var(--negro);
-  padding: 80px clamp(24px, 6vw, 120px) 0;
+  padding: 48px clamp(24px, 6vw, 120px) 0;
+  border-top: 1px solid #222;
 }
 
 .footer-inner {
@@ -2826,11 +2827,12 @@ h4, .h4 {
   .faq-item:last-child { display: none; }
 
   /* Newsletter + Instagram: más compacto */
-  .connect-section { padding: 48px 24px; }
-  .connect-inner { gap: 32px; }
+  .connect-section { padding: 40px 24px 32px; }
+  .connect-inner { gap: 28px; }
   .connect-title { font-size: 22px; margin-bottom: 10px; }
   .connect-subtitle { font-size: 14px; margin-bottom: 20px; }
   .connect-eyebrow { margin-bottom: 8px; }
+  .footer { padding-top: 28px; }
 }
 
 /* === COLLAPSE GENÉRICO === */
