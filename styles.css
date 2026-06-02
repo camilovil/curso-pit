@@ -2771,11 +2771,6 @@ h4, .h4 {
     text-align: left;
   }
 
-  .doctor-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
   .doctor-photo-placeholder {
     aspect-ratio: 4/3;
     max-width: 360px;
@@ -2806,10 +2801,13 @@ h4, .h4 {
     gap: 8px;
   }
 
+  /* === MOBILE: OPTIMIZACIÓN GLOBAL DE SCROLL === */
+
+  /* Reducir padding de todas las secciones */
+  :root { --section-padding: 40px 20px; }
+
   /* Secciones secundarias — ocultas en mobile */
-  .mobile-hidden {
-    display: none !important;
-  }
+  .mobile-hidden { display: none !important; }
 
   /* Hero: precio más visible */
   .hero-price-hint {
@@ -2832,12 +2830,62 @@ h4, .h4 {
   .faq-item:last-child { display: none; }
 
   /* Newsletter + Instagram: más compacto */
-  .connect-section { padding: 40px 24px 32px; }
-  .connect-inner { gap: 28px; }
-  .connect-title { font-size: 22px; margin-bottom: 10px; }
-  .connect-subtitle { font-size: 14px; margin-bottom: 20px; }
-  .connect-eyebrow { margin-bottom: 8px; }
-  .footer { padding-top: 28px; }
+  .connect-section { padding: 32px 20px 28px; }
+  .connect-inner { gap: 24px; }
+  .connect-title { font-size: 20px; margin-bottom: 8px; }
+  .connect-subtitle { font-size: 13px; margin-bottom: 16px; }
+  .connect-eyebrow { margin-bottom: 6px; }
+  .footer { padding-top: 24px; }
+
+  /* Doctor: foto pequeña tipo contacto + texto al lado */
+  .doctor-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .doctor-inner > div:first-child {
+    flex: 0 0 72px;
+  }
+  .doctor-inner > div:last-child {
+    flex: 1;
+    min-width: 0;
+  }
+  .doctor-photo-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .doctor-photo-main {
+    aspect-ratio: 1 / 1;
+    max-height: none;
+    border-radius: 50%;
+    object-position: center 10%;
+  }
+  .doctor-photo-secondary { display: none; }
+  .doctor-title { font-size: clamp(20px, 5vw, 26px); margin-bottom: 12px; }
+  .doctor-bio { font-size: 14px; line-height: 22px; }
+  .doctor-bio p { margin-bottom: 10px; }
+
+  /* Section toggles: más compactos en mobile */
+  .section-toggle {
+    margin-top: 16px;
+    padding: 11px 16px;
+    font-size: 10px;
+  }
+  .faq-more-btn { padding: 8px 0; font-size: 10px; }
+  .credentials-toggle { font-size: 10px; }
+
+  /* Títulos de sección más compactos */
+  .testimonials-title,
+  .case-title,
+  .content-title,
+  .audience-title { margin-bottom: 16px; }
+  .testimonials-eyebrow,
+  .case-eyebrow,
+  .content-eyebrow { margin-bottom: 8px; }
 }
 
 /* === COLLAPSE GENÉRICO === */
