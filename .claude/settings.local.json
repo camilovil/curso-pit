@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(magick --version 2>$null)",
-      "PowerShell(if \\($LASTEXITCODE -ne 0\\) { \"ImageMagick no disponible\" })"
-    ]
-  }
-}
