@@ -2878,6 +2878,11 @@ h4, .h4 {
   .faq-more-btn { padding: 8px 0; font-size: 10px; }
   .credentials-toggle { font-size: 10px; }
 
+  /* Garantía: solo el toggle, sin tanto padding */
+  .guarantee-section { padding: 16px 20px; }
+  .guarantee-inner { display: block; }
+  .guarantee-inner .section-toggle { margin-top: 0; }
+
   /* Títulos de sección más compactos */
   .testimonials-title,
   .case-title,
