@@ -97,22 +97,42 @@ img {
   .scroll-top { bottom: 24px; right: 20px; width: 40px; height: 40px; }
 }
 
-/* === CURSOR PERSONALIZADO === */
-.custom-cursor {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  background-color: var(--azul);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
-  mix-blend-mode: difference;
+/* === CURSOR PERSONALIZADO (solo desktop) === */
+@media (pointer: fine) {
+  .custom-cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background-color: var(--azul);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+    mix-blend-mode: difference;
+  }
+
+  .custom-cursor.hover {
+    transform: translate(-50%, -50%) scale(2.5);
+  }
 }
 
-.custom-cursor.hover {
-  transform: translate(-50%, -50%) scale(2.5);
+@media (pointer: coarse) {
+  .custom-cursor { display: none; }
+
+  body,
+  a, button,
+  .btn, .scroll-top, .logo,
+  .navbar-links a, .hamburger,
+  .mobile-drawer a,
+  .hero-cta-secondary, .pricing-code,
+  .faq-question, .newsletter-btn,
+  .instagram-btn, .video-play-btn,
+  .pit-panel-footer-link, .bio-link,
+  .credentials-link, .credentials-link,
+  .footer-links li a, .footer-contact-item a {
+    cursor: auto;
+  }
 }
 
 /* === ANIMACIONES GLOBALES === */
@@ -2213,7 +2233,7 @@ h4, .h4 {
 
 .case-grid {
   display: grid;
-  grid-template-columns: 1fr 60px 1fr;
+  grid-template-columns: 1fr 100px 1fr;
   gap: 0;
   align-items: stretch;
   margin-bottom: 48px;
