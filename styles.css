@@ -810,9 +810,9 @@ h4, .h4 {
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--ink-40);
-  padding: 0 24px;
+  padding: 0 16px;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -1078,6 +1078,7 @@ h4, .h4 {
 .video-section {
   background-color: var(--negro);
   padding: var(--section-padding);
+  padding-bottom: clamp(48px, 6vw, 80px);
 }
 
 .video-inner {
@@ -1263,6 +1264,8 @@ h4, .h4 {
 .audience-section {
   background-color: var(--negro);
   padding: var(--section-padding);
+  padding-top: clamp(48px, 6vw, 80px);
+  border-top: 1px solid #1a1a1a;
 }
 
 .audience-inner {
