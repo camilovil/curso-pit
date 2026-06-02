@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "npx clean-css-cli styles.css -o styles.min.css",
+    "build:css": "npx clean-css-cli src/styles.css -o styles.min.css",
     "serve": "serve -l 3000 .",
     "dev": "serve -l 3000 .",
     "build": "npm run build:css"
