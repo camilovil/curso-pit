@@ -45,7 +45,7 @@ img {
   --font-sans: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --section-padding: clamp(80px, 10vw, 140px) clamp(24px, 6vw, 120px);
+  --section-padding: clamp(52px, 6vw, 88px) clamp(24px, 6vw, 120px);
   --content-max: 1200px;
   --text-max: 66ch;
 
@@ -1734,7 +1734,7 @@ h4, .h4 {
 /* === SECCIÓN: TESTIMONIOS === */
 .testimonials-section {
   background-color: var(--hueso);
-  padding: var(--section-padding);
+  padding: clamp(32px, 4vw, 52px) clamp(24px, 6vw, 120px);
 }
 
 .testimonials-inner {
@@ -1748,7 +1748,7 @@ h4, .h4 {
 }
 
 .testimonials-title {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .testimonials-grid {
@@ -2229,7 +2229,7 @@ h4, .h4 {
 /* === SECCIÓN: ANTES / DESPUÉS === */
 .case-section {
   background-color: var(--hueso);
-  padding: var(--section-padding);
+  padding: clamp(32px, 4vw, 52px) clamp(24px, 6vw, 120px);
 }
 
 .case-inner {
@@ -2237,7 +2237,7 @@ h4, .h4 {
   margin: 0 auto;
 }
 
-.case-eyebrow { color: var(--azul); margin-bottom: 20px; }
+.case-eyebrow { color: var(--azul); margin-bottom: 10px; }
 
 .case-title { margin-bottom: 12px; }
 
