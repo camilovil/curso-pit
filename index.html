@@ -1,0 +1,4102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curso PIT online del Dr. Ricardo D. Frusso — único instructor autorizado en América Latina. Módulo I: Lumbalgia y Rodilla. Acceso permanente.">
+  <meta property="og:title" content="Curso PIT — Dr. Ricardo D. Frusso">
+  <meta property="og:description" content="Aprendé Perineural Injection Treatment con el referente latinoamericano. Casos clínicos reales. Acceso permanente.">
+  <title>Curso PIT · Dr. Ricardo D. Frusso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--hueso);
+      color: var(--negro);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 24px;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* === CSS VARIABLES === */
+    :root {
+      --negro: #0A0A0A;
+      --hueso: #FAFAF7;
+      --azul: #2563EB;
+      --azul-deep: #1E3A8A;
+      --azul-tint: #EFF4FE;
+      --ink-60: #404040;
+      --ink-40: #737373;
+      --ink-20: #BFBFBF;
+      --ink-10: #E5E5E5;
+      --ink-05: #F4F4F4;
+
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --section-padding: clamp(80px, 10vw, 140px) clamp(24px, 6vw, 120px);
+      --content-max: 1200px;
+      --text-max: 66ch;
+
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* === BOTÓN SCROLL TOP === */
+    .scroll-top {
+      position: fixed;
+      bottom: 36px;
+      right: 36px;
+      width: 44px;
+      height: 44px;
+      background-color: var(--azul);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none;
+      z-index: 900;
+      opacity: 0;
+      transform: translateY(12px) scale(0.85);
+      pointer-events: none;
+      transition: opacity 0.3s ease,
+                  transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  background-color var(--transition-fast);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      background-color: var(--azul-deep);
+      transform: translateY(-3px) scale(1.08);
+    }
+
+    .scroll-top svg {
+      width: 18px;
+      height: 18px;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .scroll-top { bottom: 24px; right: 20px; width: 40px; height: 40px; }
+    }
+
+    /* === CURSOR PERSONALIZADO === */
+    .custom-cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background-color: var(--azul);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+      mix-blend-mode: difference;
+    }
+
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(2.5);
+    }
+
+    /* === ANIMACIONES GLOBALES === */
+
+    /* Shimmer line — borde inferior que se revela de izquierda a derecha */
+    @keyframes shimmer-in {
+      from { width: 0; opacity: 0; }
+      to   { width: 100%; opacity: 1; }
+    }
+
+    /* Pulso suave para elementos de acento */
+    @keyframes pulse-azul {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.55; }
+    }
+
+    /* Float vertical leve — para el pipe del hero */
+    @keyframes float-pipe {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    /* Fade-slide lateral — para eyebrows */
+    @keyframes slide-right {
+      from { opacity: 0; transform: translateX(-12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* === SUBRAYADO ANIMADO EN HOVER PARA TÍTULOS === */
+
+    /* Clase base: el título envuelve su texto en un span.u con esta magia */
+    .hover-underline {
+      position: relative;
+      display: inline;
+      background-image: linear-gradient(var(--azul), var(--azul));
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 3px;
+      transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      padding-bottom: 2px;
+    }
+
+    .hover-underline:hover,
+    h2:hover .hover-underline,
+    h3:hover .hover-underline {
+      background-size: 100% 3px;
+    }
+
+    /* Títulos h2/h3 con subrayado: el cursor queda none pero el efecto visual aplica */
+    .section-title-hoverable {
+      cursor: default;
+    }
+
+    /* Highlight para palabras clave dentro de texto corrido */
+    .keyword-highlight {
+      position: relative;
+      font-weight: 600;
+      color: var(--negro);
+    }
+    .keyword-highlight::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -2px;
+      right: -2px;
+      height: 40%;
+      background-color: var(--azul-tint);
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .keyword-highlight.visible::before {
+      transform: scaleX(1);
+    }
+
+    /* Reveal underline decorativo (scroll) */
+    .underline-reveal {
+      position: relative;
+      display: inline;
+    }
+    .underline-reveal::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: var(--azul);
+      border-radius: 2px;
+      transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .underline-reveal.visible::after {
+      width: 100%;
+    }
+
+    /* Glow en cards de credenciales al hover de fila */
+    .credentials-row {
+      transition: background-color 0.2s ease;
+    }
+    .credentials-row:hover {
+      background-color: #171717;
+    }
+    .credentials-row:hover .credentials-key {
+      color: #60A5FA;
+    }
+
+    /* Stats del hero: hover glow */
+    .hero-stat {
+      transition: color 0.2s ease;
+    }
+    .hero-stat:hover {
+      color: #fff;
+    }
+
+    /* FAQ question: subrayado izquierdo azul al open */
+    .faq-item.open .faq-question {
+      color: var(--azul);
+    }
+
+    /* === AUDIENCE CARDS: FOCUS/DIM === */
+    .audience-grid {
+      transition: none;
+    }
+
+    /* Por defecto las cards son normales */
+    .audience-card {
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+                  opacity 0.35s ease,
+                  box-shadow 0.35s ease,
+                  filter 0.35s ease;
+    }
+
+    /* Cuando el grid tiene hover activo, dimear las NO-hovered */
+    .audience-grid:has(.audience-card:hover) .audience-card:not(:hover) {
+      opacity: 0.38;
+      filter: saturate(0.3) brightness(0.7);
+      transform: scale(0.985);
+    }
+
+    /* La card hovered: elevar y brillo */
+    .audience-card:hover {
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: 0 32px 64px rgba(0,0,0,0.45);
+    }
+
+    /* === LOGO ANIMACIÓN === */
+    @keyframes pipe-pulse {
+      0%   { transform: scaleY(1);   opacity: 1; }
+      40%  { transform: scaleY(0.6); opacity: 0.5; }
+      100% { transform: scaleY(1);   opacity: 1; }
+    }
+
+    .logo:hover .logo-pipe {
+      animation: pipe-pulse 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    .logo .logo-dr,
+    .logo .logo-name span {
+      transition: letter-spacing 0.35s cubic-bezier(0.22,1,0.36,1),
+                  opacity 0.25s ease;
+    }
+
+    .logo:hover .logo-dr {
+      letter-spacing: 0.18em;
+    }
+
+    .logo:hover .logo-name span {
+      letter-spacing: 0.08em;
+    }
+
+    /* Badge de "filmado" — parpadeo rec */
+    @keyframes rec-blink {
+      0%, 100% { opacity: 1; }
+      45%, 55% { opacity: 0.2; }
+    }
+
+    .rec-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background-color: #EF4444;
+      border-radius: 50%;
+      animation: rec-blink 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* Hover card lift — más pronunciado */
+    .card-lift {
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.10);
+    }
+
+    /* Stat counter glow al hover */
+    .hero-stat:hover {
+      color: #fff;
+      transition: color 0.2s ease;
+    }
+
+    /* === TIPOGRAFÍA === */
+    .display {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    h1, .h1 {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    h2, .h2 {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 52px;
+      letter-spacing: -0.025em;
+    }
+
+    h3, .h3 {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 40px;
+      letter-spacing: -0.025em;
+    }
+
+    h4, .h4 {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    .body-l {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .body {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 16px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .label {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.14em;
+    }
+
+    /* === LAYOUT HELPERS === */
+    .container {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 120px);
+    }
+
+    .text-max {
+      max-width: var(--text-max);
+    }
+
+    /* === BOTONES === */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: none;
+      transition: background-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--azul);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--azul-deep);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background-color: #fff;
+      color: var(--azul);
+    }
+
+    .btn-white:hover {
+      background-color: var(--negro);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    /* === SECCIÓN: NAVBAR === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      background-color: transparent;
+      backdrop-filter: blur(0px);
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background-color: var(--negro);
+      backdrop-filter: blur(16px);
+    }
+
+    .navbar-inner {
+      max-width: var(--content-max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 120px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Logotipo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: none;
+    }
+
+    .logo-dr {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .logo-pipe {
+      display: inline-block;
+      width: 3px;
+      height: 28px;
+      background-color: var(--azul);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .logo-name {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
+
+    .logo-name span {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .logo-positive .logo-dr,
+    .logo-positive .logo-name span {
+      color: var(--negro);
+    }
+
+    .navbar:not(.scrolled) .logo-dr,
+    .navbar:not(.scrolled) .logo-name span {
+      color: #fff;
+    }
+
+    .navbar.scrolled .logo-dr,
+    .navbar.scrolled .logo-name span {
+      color: #fff;
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .navbar-links a {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color var(--transition-fast);
+      cursor: none;
+    }
+
+    .navbar-links a:hover {
+      color: #fff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: none;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background-color: var(--negro);
+      z-index: 999;
+      flex-direction: column;
+      padding: 80px 32px 40px;
+      gap: 32px;
+      transition: right 0.3s ease;
+    }
+
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    .mobile-drawer a {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 20px;
+      color: #fff;
+      cursor: none;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 998;
+    }
+
+    .mobile-overlay.open {
+      display: block;
+    }
+
+    /* === SECCIÓN: HERO === */
+    .hero {
+      background-color: var(--negro);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px clamp(24px, 6vw, 120px) 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Foto clínica derecha */
+    .hero-photo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 52%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+      filter: grayscale(15%) brightness(0.75);
+    }
+
+    /* Gradient fade de la foto hacia la izquierda */
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        var(--negro) 0%,
+        rgba(10,10,10,0.7) 30%,
+        rgba(10,10,10,0.1) 70%,
+        transparent 100%
+      );
+      z-index: 1;
+    }
+
+    /* Gradient fade inferior */
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--negro) 0%,
+        transparent 30%
+      );
+      z-index: 1;
+    }
+
+    .hero-inner {
+      max-width: var(--content-max);
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      color: var(--azul);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-title {
+      color: #fff;
+      margin-bottom: 0;
+    }
+
+    .hero-title .line1 {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-title .line2 {
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-inline-pipe {
+      display: inline-block;
+      width: 4px;
+      height: 1em;
+      background-color: var(--azul);
+      border-radius: 2px;
+      flex-shrink: 0;
+      opacity: 0;
+      transform: scaleY(0);
+      transform-origin: top center;
+      animation: float-pipe 4s ease-in-out infinite;
+      animation-play-state: paused;
+    }
+
+    .hero-inline-pipe.revealed {
+      opacity: 1;
+      transform: scaleY(1);
+      transition: opacity 0.5s ease 0.15s, transform 0.5s cubic-bezier(0.22,1,0.36,1) 0.15s;
+      animation-play-state: running;
+    }
+
+    .hero-subtitle {
+      color: var(--ink-40);
+      font-size: 20px;
+      line-height: 30px;
+      max-width: 52ch;
+      margin-top: 28px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-cta-secondary {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 15px;
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: none;
+      transition: color var(--transition-fast);
+    }
+
+    .hero-cta-secondary:hover {
+      color: var(--azul);
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-top: 64px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-stat {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--ink-40);
+      padding: 0 24px;
+      text-transform: uppercase;
+    }
+
+    .hero-stat:first-child {
+      padding-left: 0;
+    }
+
+    .hero-stat-sep {
+      color: var(--azul);
+      font-size: 18px;
+    }
+
+    /* Hero background — imagen + overlay */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/DSC_0045.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: 0.18;
+      filter: grayscale(30%);
+      z-index: 0;
+    }
+
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    /* === ANIMATE IN (Intersection Observer) === */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === SECCIÓN: QUÉ ES EL PIT === */
+    .pit-section {
+      background-color: var(--hueso);
+      padding: var(--section-padding);
+    }
+
+    .pit-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .pit-eyebrow {
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .pit-title {
+      margin-bottom: 32px;
+      max-width: 14ch;
+    }
+
+    .pit-copy {
+      color: var(--ink-60);
+      max-width: var(--text-max);
+    }
+
+    .pit-copy p {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.25s ease, color 0.25s ease;
+      cursor: default;
+    }
+
+    .pit-copy p:hover {
+      border-left-color: var(--azul);
+      color: var(--negro);
+    }
+
+    .pit-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Strip de fotos clínicas */
+    .pit-photo-strip {
+      max-width: var(--content-max);
+      margin: 64px auto 0;
+      padding: 0 clamp(24px, 6vw, 120px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .pit-photo-item {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: default;
+    }
+
+    .pit-photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: grayscale(20%) brightness(0.88);
+      transition: filter 0.4s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .pit-photo-item:hover img {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.04);
+    }
+
+    .pit-photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 16px 12px;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      transform: translateY(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .pit-photo-item:hover .pit-photo-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .pit-photo-strip {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 40px;
+        padding: 0 24px;
+      }
+      .pit-photo-item:last-child {
+        grid-column: span 2;
+      }
+    }
+
+    /* Panel oscuro mecanismo de acción */
+    .pit-panel {
+      background-color: var(--negro);
+      border-radius: 8px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .pit-panel-title {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .pit-panel-divider {
+      height: 1px;
+      background-color: var(--ink-60);
+      margin-bottom: 24px;
+    }
+
+    .pit-panel-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      align-items: start;
+    }
+
+    .pit-panel-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pit-panel-label {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      padding-top: 2px;
+    }
+
+    .pit-panel-value {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 14px;
+      color: #fff;
+      line-height: 20px;
+    }
+
+    .pit-panel-footer {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--ink-60);
+    }
+
+    .pit-panel-footer-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      margin-bottom: 4px;
+    }
+
+    .pit-panel-footer-value {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--azul);
+    }
+
+    .pit-panel-footer-link {
+      display: inline-block;
+      text-decoration: none;
+      transition: color var(--transition-fast), letter-spacing var(--transition-fast);
+      cursor: none;
+    }
+
+    .pit-panel-footer-link:hover {
+      color: #60A5FA;
+      letter-spacing: 0.02em;
+    }
+
+    .pit-panel-footer-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--ink-40);
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    /* === SECCIÓN: VIDEO === */
+    .video-section {
+      background-color: var(--negro);
+      padding: var(--section-padding);
+    }
+
+    .video-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .video-eyebrow { color: var(--azul); margin-bottom: 16px; }
+
+    .video-title {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .video-subtitle {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--ink-40);
+      max-width: 42ch;
+    }
+
+    /* Player */
+    .video-player {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #0f0f0f;
+      border: 1px solid #222;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-player:hover {
+      border-color: #333;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    .video-thumb {
+      aspect-ratio: 16/9;
+      background-color: #111;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Overlay oscuro sobre la foto */
+    .video-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.35) 50%,
+        rgba(0,0,0,0.65) 100%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(37,99,235,0.12) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-thumb-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 32px;
+    }
+
+    .video-play-btn {
+      width: 72px;
+      height: 72px;
+      cursor: none;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), filter 0.3s ease;
+    }
+
+    .video-play-btn:hover {
+      transform: scale(1.12);
+      filter: drop-shadow(0 0 20px rgba(37,99,235,0.5));
+    }
+
+    .video-play-btn svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Animación del círculo del play */
+    @keyframes play-ring {
+      0%   { transform: scale(1);   opacity: 0.2; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .video-play-btn::after {
+      content: '';
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border: 1.5px solid rgba(37,99,235,0.4);
+      border-radius: 50%;
+      animation: play-ring 2.2s ease-out infinite;
+      pointer-events: none;
+    }
+
+    .video-thumb-meta {
+      text-align: center;
+    }
+
+    .video-thumb-title {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 22px;
+    }
+
+    /* Info bar debajo del thumb */
+    .video-info {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 14px 20px;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .video-info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      flex: 1;
+      justify-content: center;
+    }
+
+    .video-info-icon {
+      color: var(--azul);
+      font-size: 11px;
+    }
+
+    .video-info-sep {
+      width: 1px;
+      height: 20px;
+      background-color: #222;
+      flex-shrink: 0;
+    }
+
+    .video-bg-blur { display: none; }
+
+    @media (max-width: 1024px) {
+      .video-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .video-subtitle { max-width: 100%; }
+    }
+
+    /* === SECCIÓN: PARA QUIÉN ES === */
+    .audience-section {
+      background-color: var(--negro);
+      padding: var(--section-padding);
+    }
+
+    .audience-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .audience-eyebrow {
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .audience-title {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .audience-subtitle {
+      color: var(--ink-40);
+      font-size: 18px;
+      line-height: 28px;
+      max-width: 60ch;
+      margin-bottom: 56px;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .audience-card {
+      border-radius: 8px;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .audience-card-pro {
+      background-color: var(--azul);
+    }
+
+    .audience-card-patient {
+      background-color: var(--azul-deep);
+    }
+
+    .audience-card-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .audience-card-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .audience-card-body {
+      font-size: 16px;
+      line-height: 24px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .audience-card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .audience-card-list li {
+      font-size: 15px;
+      line-height: 22px;
+      color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .audience-card-list li::before {
+      content: '→';
+      color: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* === SECCIÓN: CONTENIDO DEL CURSO === */
+    .content-section {
+      background-color: var(--hueso);
+      padding: var(--section-padding);
+    }
+
+    .content-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .content-eyebrow {
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .content-title {
+      margin-bottom: 20px;
+    }
+
+    /* Banner "filmado real" */
+    .filmed-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--negro);
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+    }
+
+    .filmed-banner-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .content-subtitle {
+      color: var(--ink-60);
+      font-size: 18px;
+      line-height: 28px;
+      max-width: 60ch;
+      margin-bottom: 56px;
+    }
+
+    /* Badge filmado con dot rojo */
+    .chapter-card-badge-filmed {
+      background-color: #0A0A0A;
+      color: #fff;
+      gap: 10px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .chapter-card {
+      background-color: #fff;
+      border: 1px solid var(--ink-10);
+      border-radius: 8px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .chapter-card:hover {
+      border-color: var(--azul);
+      transform: translateY(-2px);
+    }
+
+    .chapter-card-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--azul);
+    }
+
+    .chapter-card-title {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 32px;
+      letter-spacing: -0.02em;
+      color: var(--negro);
+    }
+
+    .chapter-card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chapter-card-list li {
+      font-size: 15px;
+      line-height: 22px;
+      color: var(--ink-60);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .chapter-card-list li::before {
+      content: '—';
+      color: var(--ink-20);
+      flex-shrink: 0;
+    }
+
+    .chapter-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--azul-tint);
+      color: var(--azul);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 8px 14px;
+      border-radius: 4px;
+      margin-top: auto;
+    }
+
+    /* Barra de módulos */
+    .modules-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .module-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 160px;
+      align-items: center;
+      column-gap: 24px;
+      row-gap: 0;
+      padding: 20px 28px;
+      border: 1px solid var(--ink-10);
+      border-radius: 6px;
+      background-color: #fff;
+    }
+
+    .module-label {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--negro);
+      grid-row: 1 / 3;   /* ocupa ambas filas */
+      align-self: center;
+    }
+
+    .module-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .module-bar-track {
+      height: 5px;
+      background-color: var(--ink-10);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .module-bar-fill {
+      height: 100%;
+      background-color: var(--azul);
+      border-radius: 3px;
+    }
+
+    .module-desc {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink-40);
+      line-height: 1.3;
+    }
+
+    .module-status {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: right;
+      grid-row: 1 / 3;   /* ocupa ambas filas */
+      align-self: center;
+    }
+
+    .module-status.available {
+      color: var(--azul);
+    }
+
+    .module-status.coming {
+      color: var(--ink-40);
+    }
+
+    .module-row.coming-soon {
+      opacity: 0.6;
+    }
+
+    /* === SECCIÓN: SOBRE EL DR. FRUSSO === */
+    .doctor-section {
+      background-color: var(--negro);
+      padding: var(--section-padding);
+    }
+
+    .doctor-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .doctor-eyebrow {
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .doctor-title {
+      color: #fff;
+      margin-bottom: 32px;
+    }
+
+    .doctor-photo-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .doctor-photo-main {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      display: block;
+      border: 1px solid #222;
+      filter: grayscale(15%);
+      transition: filter 0.3s ease;
+    }
+
+    .doctor-photo-main:hover {
+      filter: grayscale(0%);
+    }
+
+    .doctor-photo-secondary {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 48%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 6px;
+      border: 3px solid var(--negro);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+      filter: grayscale(20%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .doctor-photo-secondary:hover {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      .doctor-photo-secondary {
+        right: -12px;
+        bottom: -16px;
+        width: 44%;
+        border-width: 2px;
+      }
+    }
+
+    .doctor-bio {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 28px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      max-width: 65ch;
+    }
+
+    .bio-link {
+      color: var(--azul);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(37,99,235,0.4);
+      transition: text-decoration-color var(--transition-fast), color var(--transition-fast);
+      cursor: none;
+    }
+
+    .bio-link:hover {
+      color: #60A5FA;
+      text-decoration-color: #60A5FA;
+    }
+
+    .doctor-bio p {
+      margin-bottom: 20px;
+    }
+
+    .doctor-bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Tabla de credenciales */
+    .credentials-table {
+      background-color: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .credentials-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .credentials-row:last-child {
+      border-bottom: none;
+    }
+
+    .credentials-key {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--azul);
+      padding: 14px 20px;
+      border-right: 1px solid #1e1e1e;
+      display: flex;
+      align-items: center;
+    }
+
+    .credentials-val {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .credentials-link {
+      color: var(--azul);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(37,99,235,0.4);
+      font-size: 14px;
+      transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+      cursor: none;
+    }
+
+    .credentials-link:hover {
+      color: #60A5FA;
+      text-decoration-color: #60A5FA;
+    }
+
+    /* === SECCIÓN: TESTIMONIOS === */
+    .testimonials-section {
+      background-color: var(--hueso);
+      padding: var(--section-padding);
+    }
+
+    .testimonials-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .testimonials-eyebrow {
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .testimonials-title {
+      margin-bottom: 56px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background-color: #fff;
+      border: 1px solid var(--ink-10);
+      border-radius: 8px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.3s ease,
+                  transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--azul);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(37,99,235,0.08);
+    }
+
+    .testimonial-card:hover .testimonial-quote-mark {
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .testimonial-quote-mark {
+      font-family: var(--font-sans);
+      font-size: 48px;
+      line-height: 1;
+      color: var(--azul);
+      font-weight: 700;
+      opacity: 0.3;
+    }
+
+    .testimonial-text {
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--ink-60);
+      font-style: italic;
+      flex: 1;
+    }
+
+    .testimonial-placeholder-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--azul);
+      text-transform: uppercase;
+      background-color: var(--azul-tint);
+      padding: 6px 10px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid var(--ink-10);
+      padding-top: 20px;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: var(--ink-05);
+      border-radius: 50%;
+      border: 1px solid var(--ink-10);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-author-name {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--negro);
+    }
+
+    .testimonial-author-role {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+    }
+
+    /* === SECCIÓN: PRECIO + CTA === */
+    .pricing-section {
+      background-color: var(--azul);
+      padding: var(--section-padding);
+      text-align: center;
+    }
+
+    .pricing-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .pricing-eyebrow {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+    }
+
+    .pricing-title {
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    .pricing-price {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: clamp(64px, 10vw, 96px);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .pricing-price-note {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      margin-bottom: 40px;
+    }
+
+    .pricing-discount {
+      background-color: var(--azul-deep);
+      border: 2px dashed rgba(255,255,255,0.3);
+      border-radius: 6px;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pricing-discount-label {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .pricing-code {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      color: #fff;
+      background-color: rgba(255,255,255,0.1);
+      padding: 6px 16px;
+      border-radius: 4px;
+      cursor: none;
+      transition: background-color var(--transition-fast);
+      user-select: all;
+    }
+
+    .pricing-code:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .pricing-discount-pct {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .pricing-cta {
+      margin-bottom: 32px;
+    }
+
+    .pricing-payments {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+
+    .pricing-certificate {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-sans);
+      max-width: 50ch;
+    }
+
+    /* === SECCIÓN: FAQ === */
+    .faq-section {
+      background-color: var(--hueso);
+      padding: var(--section-padding);
+    }
+
+    .faq-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .faq-eyebrow {
+      color: var(--azul);
+      margin-bottom: 20px;
+    }
+
+    .faq-title {
+      margin-bottom: 56px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 800px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--ink-10);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--ink-10);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      cursor: none;
+      text-align: left;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 24px;
+      color: var(--negro);
+      transition: color var(--transition-fast);
+    }
+
+    .faq-question:hover {
+      color: var(--azul);
+    }
+
+    .faq-icon {
+      font-size: 22px;
+      color: var(--azul);
+      flex-shrink: 0;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+    }
+
+    .faq-answer-inner {
+      padding-bottom: 24px;
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--ink-60);
+      max-width: 68ch;
+    }
+
+    /* === SECCIÓN: NEWSLETTER + INSTAGRAM === */
+    .connect-section {
+      background-color: var(--negro);
+      padding: var(--section-padding);
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .connect-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .connect-divider {
+      background-color: #222;
+      height: 100%;
+      min-height: 280px;
+      width: 1px;
+      justify-self: center;
+    }
+
+    .connect-eyebrow {
+      color: var(--azul);
+      margin-bottom: 16px;
+    }
+
+    .connect-title {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .connect-subtitle {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--ink-40);
+      max-width: 44ch;
+      margin-bottom: 32px;
+    }
+
+    /* Newsletter form */
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .newsletter-input-wrap {
+      display: flex;
+      gap: 0;
+      border: 1px solid #333;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .newsletter-input-wrap:focus-within {
+      border-color: var(--azul);
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: #111;
+      border: none;
+      outline: none;
+      padding: 14px 18px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: #fff;
+      min-width: 0;
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--ink-40);
+    }
+
+    .newsletter-btn {
+      background-color: var(--azul);
+      color: #fff;
+      border: none;
+      padding: 14px 22px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: none;
+      white-space: nowrap;
+      transition: background-color var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .newsletter-btn:hover {
+      background-color: var(--azul-deep);
+    }
+
+    .newsletter-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-60);
+    }
+
+    .newsletter-success {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--azul);
+      padding: 10px 0;
+    }
+
+    .newsletter-success.visible {
+      display: block;
+    }
+
+    /* Instagram CTA */
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #111;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 16px 24px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 17px;
+      color: #fff;
+      cursor: none;
+      transition: border-color var(--transition-fast),
+                  background-color var(--transition-fast),
+                  transform var(--transition-fast);
+      margin-bottom: 14px;
+    }
+
+    .instagram-btn:hover {
+      border-color: var(--azul);
+      background-color: #161616;
+      transform: translateY(-2px);
+    }
+
+    .instagram-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--azul);
+      flex-shrink: 0;
+      transition: color var(--transition-fast);
+    }
+
+    .instagram-btn:hover .instagram-icon {
+      color: #60A5FA;
+    }
+
+    .instagram-handle-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-60);
+    }
+
+    @media (max-width: 768px) {
+      .connect-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .connect-divider {
+        display: none;
+      }
+    }
+
+    /* === SECCIÓN: ANTES / DESPUÉS === */
+    .case-section {
+      background-color: var(--hueso);
+      padding: var(--section-padding);
+    }
+
+    .case-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .case-eyebrow { color: var(--azul); margin-bottom: 20px; }
+
+    .case-title { margin-bottom: 12px; }
+
+    .case-subtitle {
+      color: var(--ink-60);
+      font-size: 16px;
+      line-height: 24px;
+      max-width: 60ch;
+      margin-bottom: 48px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-bottom: 48px;
+    }
+
+    .case-card {
+      border-radius: 8px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease,
+                  border-color 0.25s ease;
+    }
+
+    .case-before {
+      background-color: #fff;
+      border: 1px solid var(--ink-10);
+    }
+
+    .case-before:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+      border-color: var(--ink-20);
+    }
+
+    .case-after {
+      background-color: var(--negro);
+      border: 1px solid transparent;
+    }
+
+    .case-after:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(37,99,235,0.18);
+      border-color: var(--azul);
+    }
+
+    .case-card-header { display: flex; align-items: center; gap: 10px; }
+
+    .case-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+
+    .case-tag-before { background: var(--ink-05); color: var(--ink-60); }
+    .case-tag-after  { background: rgba(37,99,235,0.15); color: var(--azul); }
+
+    .case-card-patient {
+      font-size: 13px;
+      color: var(--ink-40);
+    }
+
+    .case-after .case-card-patient { color: var(--ink-40); }
+
+    .case-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .case-list li {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--ink-60);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .case-after .case-list li { color: rgba(255,255,255,0.75); }
+
+    .case-list li::before {
+      content: '·';
+      color: var(--ink-20);
+      flex-shrink: 0;
+      font-size: 18px;
+      line-height: 18px;
+    }
+
+    .case-after .case-list li::before {
+      color: var(--azul);
+    }
+
+    .case-placeholder-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--ink-40);
+      border-top: 1px dashed var(--ink-10);
+      padding-top: 12px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .case-after .case-placeholder-note {
+      color: #333;
+      border-top-color: #222;
+    }
+
+    .case-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding-top: 80px;
+    }
+
+    .case-arrow-label { color: var(--ink-40); font-size: 10px; text-align: center; }
+
+    /* Cita / quote */
+    .case-quote {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--ink-10);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .case-quote-pipe {
+      width: 3px;
+      min-height: 60px;
+      background-color: var(--azul);
+      border-radius: 2px;
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+
+    .case-quote-text {
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--ink-60);
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .case-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-arrow {
+        flex-direction: row;
+        padding-top: 0;
+        justify-content: center;
+      }
+      .case-arrow svg { transform: rotate(90deg); }
+    }
+
+    /* === SECCIÓN: GARANTÍA === */
+    .guarantee-section {
+      background-color: var(--azul-tint);
+      border-top: 1px solid rgba(37,99,235,0.12);
+      border-bottom: 1px solid rgba(37,99,235,0.12);
+      padding: 40px clamp(24px, 6vw, 120px);
+    }
+
+    .guarantee-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .guarantee-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--azul);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .guarantee-icon svg { width: 20px; height: 20px; }
+
+    .guarantee-label {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--negro);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .guarantee-desc {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ink-60);
+      line-height: 16px;
+    }
+
+    .guarantee-sep {
+      width: 1px;
+      height: 44px;
+      background-color: rgba(37,99,235,0.15);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .guarantee-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .guarantee-sep { display: none; }
+    }
+
+    /* === STICKY BAR MOBILE === */
+    .sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--negro);
+      border-top: 1px solid #222;
+      padding: 12px 20px;
+      z-index: 800;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .sticky-bar.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-bar-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sticky-bar-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+    }
+
+    .sticky-bar-price {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .sticky-bar-btn {
+      background-color: var(--azul);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background-color var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .sticky-bar-btn:hover { background-color: var(--azul-deep); }
+
+    @media (max-width: 768px) {
+      .sticky-bar { display: flex; }
+    }
+
+    /* === NAVBAR LINK ACTIVO === */
+    .navbar-links a.nav-active {
+      color: #fff;
+      position: relative;
+    }
+
+    .navbar-links a.nav-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--azul);
+      border-radius: 2px;
+    }
+
+    /* === SECCIÓN: FOOTER === */
+    .footer {
+      background-color: var(--negro);
+      padding: 80px clamp(24px, 6vw, 120px) 0;
+    }
+
+    .footer-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+    }
+
+    .footer-logo-tagline {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-40);
+      margin-top: 16px;
+      line-height: 22px;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links li a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      cursor: none;
+      transition: color var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links li a:hover {
+      color: #fff;
+    }
+
+    .footer-links li a::before {
+      content: '→';
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    .footer-contact-item {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 22px;
+      margin-bottom: 8px;
+    }
+
+    .footer-contact-item a {
+      color: rgba(255,255,255,0.5);
+      cursor: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-contact-item a:hover {
+      color: var(--azul);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1a1a1a;
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-bottom-text {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-60);
+    }
+
+    .footer-bottom-url {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-60);
+      cursor: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-bottom-url:hover {
+      color: var(--azul);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .pit-inner {
+        gap: 48px;
+      }
+
+      .doctor-inner {
+        grid-template-columns: 260px 1fr;
+        gap: 48px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-drawer {
+        display: flex;
+      }
+
+      .hero {
+        padding: 100px 24px 60px;
+        min-height: 100svh;
+      }
+
+      .hero-photo {
+        width: 100%;
+        opacity: 0.25;
+      }
+
+      .hero-photo::before {
+        background: linear-gradient(
+          to bottom,
+          var(--negro) 0%,
+          rgba(10,10,10,0.4) 40%,
+          rgba(10,10,10,0.6) 100%
+        );
+      }
+
+      .hero-inner {
+        max-width: 100%;
+      }
+
+      .hero-title .display {
+        font-size: 52px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 40px;
+      }
+
+      .hero-stat {
+        padding: 0;
+      }
+
+      .hero-stat-sep {
+        display: none;
+      }
+
+      .pit-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .module-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .module-status {
+        text-align: left;
+      }
+
+      .doctor-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .doctor-photo-placeholder {
+        aspect-ratio: 4/3;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      h2, .h2 {
+        line-height: 1.15;
+      }
+
+      .pricing-discount {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor personalizado -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- Sticky bar mobile -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="sticky-bar-info">
+      <span class="sticky-bar-title">Módulo I · Disponible</span>
+      <span class="sticky-bar-price">USD 97.99</span>
+    </div>
+    <a href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P" target="_blank" rel="noopener noreferrer" class="sticky-bar-btn">
+      Acceder →
+    </a>
+  </div>
+
+  <!-- Botón scroll top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Volver al inicio">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 14V4M4 9l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile drawer -->
+  <nav class="mobile-drawer" id="mobileDrawer">
+    <a href="#pit" onclick="closeMobile()">El curso</a>
+    <a href="#doctor" onclick="closeMobile()">Sobre el Dr. Frusso</a>
+    <a href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P" target="_blank" class="btn btn-primary btn-sm" style="width:fit-content">Inscribirme</a>
+  </nav>
+
+  <!-- === SECCIÓN: NAVBAR === -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <!-- Logotipo -->
+      <a href="#" class="logo" aria-label="Dr. Ricardo D. Frusso">
+        <span class="logo-dr">DR.</span>
+        <span class="logo-pipe" aria-hidden="true"></span>
+        <span class="logo-name">
+          <span>RICARDO</span>
+          <span>D. FRUSSO</span>
+        </span>
+      </a>
+
+      <!-- Links desktop -->
+      <nav class="navbar-links">
+        <a href="#pit">El curso</a>
+        <a href="#doctor">Sobre el Dr. Frusso</a>
+        <a href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P" target="_blank" class="btn btn-primary btn-sm">Inscribirme</a>
+      </nav>
+
+      <!-- Hamburger mobile -->
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- === SECCIÓN: HERO === -->
+    <section class="hero" id="hero">
+      <!-- Foto clínica lado derecho -->
+      <div class="hero-photo" aria-hidden="true">
+        <img src="img/DSC_0086.jpg" alt="" loading="eager"/>
+      </div>
+
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-inner">
+
+        <p class="eyebrow hero-eyebrow" id="hero-eyebrow">
+          Curso Introductorio · Online · Abierto a todos
+        </p>
+
+        <h1 class="hero-title display" id="hero-title">
+          <span class="line1" id="hero-line1">
+            <span class="hero-inline-pipe" id="hero-pipe" aria-hidden="true"></span>Tratá el dolor
+          </span>
+          <span class="line2" id="hero-line2">desde su origen.</span>
+        </h1>
+
+        <p class="hero-subtitle" id="hero-subtitle">
+          Curso introductorio online con uno de los instructores<br>
+          autorizados de PIT en América Latina.<br>
+          Lumbalgia · Rodilla · Acceso permanente.
+        </p>
+
+        <div class="hero-ctas" id="hero-ctas">
+          <a href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P" target="_blank" class="btn btn-primary">
+            Quiero acceder al curso →
+          </a>
+          <a href="#contenido" class="hero-cta-secondary">
+            Ver contenido del curso
+          </a>
+        </div>
+
+        <div class="hero-stats" id="hero-stats">
+          <span class="hero-stat">30+ años de experiencia</span>
+          <span class="hero-stat-sep" aria-hidden="true">|</span>
+          <span class="hero-stat">Autorizado por Dr. Lyftogt</span>
+          <span class="hero-stat-sep" aria-hidden="true">|</span>
+          <span class="hero-stat">Acceso permanente</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: QUÉ ES EL PIT === -->
+    <section class="pit-section" id="pit">
+      <div class="pit-inner">
+
+        <!-- Columna izquierda -->
+        <div>
+          <p class="eyebrow pit-eyebrow animate-in">Perineural Injection Treatment</p>
+          <h2 class="pit-title section-title-hoverable animate-in" style="transition-delay: 0.1s">
+            <span class="hover-underline">Una técnica que actúa donde nace el dolor.</span>
+          </h2>
+          <div class="pit-copy animate-in" style="transition-delay: 0.2s">
+            <p>
+              El PIT — Perineural Injection Treatment — es una técnica mínimamente
+              invasiva que busca despolarizar los nervios subcutáneos sensibilizados
+              mediante inyecciones de solución de glucosa al 5%.
+            </p>
+            <p>
+              Cuando un nervio periférico se inflama de forma crónica, pierde su
+              capacidad de regulación. El PIT restaura esa función, reduciendo el
+              dolor desde su origen neurológico.
+            </p>
+            <p>
+              El tratamiento requiere entre 4 y 8 sesiones espaciadas una vez
+              por semana, y puede combinarse con otras técnicas de medicina
+              musculoesquelética.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna derecha: panel técnico -->
+        <div class="animate-in" style="transition-delay: 0.2s">
+          <div class="pit-panel">
+            <p class="pit-panel-title">Mecanismo de Acción</p>
+            <div class="pit-panel-divider"></div>
+
+            <div class="pit-panel-row">
+              <span class="pit-panel-label">Técnica</span>
+              <span class="pit-panel-value">Inyección subcutánea</span>
+            </div>
+            <div class="pit-panel-row">
+              <span class="pit-panel-label">Solución</span>
+              <span class="pit-panel-value">Glucosa al 5%</span>
+            </div>
+            <div class="pit-panel-row">
+              <span class="pit-panel-label">Objetivo</span>
+              <span class="pit-panel-value">Nervio periférico sensibilizado</span>
+            </div>
+            <div class="pit-panel-row">
+              <span class="pit-panel-label">Sesiones</span>
+              <span class="pit-panel-value">4 a 8 · una por semana</span>
+            </div>
+            <div class="pit-panel-row">
+              <span class="pit-panel-label">Combinable con</span>
+              <span class="pit-panel-value">Neuroproloterapia · PRP · Kinesioterapia</span>
+            </div>
+            <div class="pit-panel-row">
+              <span class="pit-panel-label">Evidencia</span>
+              <span class="pit-panel-value">Dr. John Lyftogt · Nueva Zelanda</span>
+            </div>
+
+            <div class="pit-panel-footer">
+              <p class="pit-panel-footer-label">Creador del método</p>
+              <a href="https://www.lyftogtmed.com/" target="_blank" rel="noopener noreferrer" class="pit-panel-footer-value pit-panel-footer-link">
+                Dr. John Lyftogt →
+              </a>
+              <p class="pit-panel-footer-sub">lyftogtmed.com</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Strip de fotos clínicas -->
+      <div class="pit-photo-strip">
+        <div class="pit-photo-item">
+          <img src="img/DSC_0086.jpg" alt="Dr. Frusso aplicando técnica PIT" loading="lazy"/>
+          <p class="pit-photo-caption">Técnica aplicada en paciente</p>
+        </div>
+        <div class="pit-photo-item">
+          <img src="img/DSC_0116.jpg" alt="Inyección subcutánea — PIT" loading="lazy"/>
+          <p class="pit-photo-caption">Punto de inyección cervical</p>
+        </div>
+        <div class="pit-photo-item">
+          <img src="img/DSC_0098.jpg" alt="Anatomía del nervio periférico" loading="lazy"/>
+          <p class="pit-photo-caption">Mapa anatómico de referencia</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- === SECCIÓN: VIDEO === -->
+    <section class="video-section" id="video">
+      <div class="video-inner">
+
+        <div class="video-meta animate-in">
+          <p class="eyebrow video-eyebrow">Vista previa · Próximamente</p>
+          <h2 class="video-title section-title-hoverable">
+            <span class="hover-underline">El método, explicado por quien lo enseña.</span>
+          </h2>
+          <p class="video-subtitle">
+            El Dr. Frusso explica en cámara qué es el PIT, cómo actúa sobre el nervio
+            periférico y qué puede esperar un paciente en la primera sesión.
+          </p>
+        </div>
+
+        <!-- Placeholder del video -->
+        <div class="video-player animate-in" style="transition-delay:0.15s" id="videoPlaceholder">
+          <div class="video-bg-blur" aria-hidden="true"></div>
+
+          <!-- Thumbnail placeholder -->
+          <div class="video-thumb" aria-label="Video del Dr. Frusso — próximamente disponible" style="background-image: url('img/DSC_0086.jpg'); background-size: cover; background-position: center 30%;">
+            <div class="video-thumb-content">
+              <div class="video-play-btn" id="videoPlayBtn" role="button" tabindex="0" aria-label="Reproducir video">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                  <path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="#fff"/>
+                </svg>
+              </div>
+              <div class="video-thumb-meta">
+                <p class="video-thumb-label eyebrow" style="color:rgba(255,255,255,0.5); letter-spacing:0.16em">
+                  Video · Próximamente
+                </p>
+                <p class="video-thumb-title">
+                  Introducción al PIT con el Dr. Ricardo D. Frusso
+                </p>
+                <!-- COMPLETAR: reemplazar este bloque con el iframe de YouTube/Vimeo cuando el video esté listo -->
+                <!-- Ejemplo: <iframe src="https://www.youtube.com/embed/VIDEO_ID" ...></iframe> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Duración / datos del video -->
+          <div class="video-info">
+            <div class="video-info-item">
+              <span class="video-info-icon" aria-hidden="true">▶</span>
+              <span>[COMPLETAR duración]</span>
+            </div>
+            <div class="video-info-sep" aria-hidden="true"></div>
+            <div class="video-info-item">
+              <span class="video-info-icon" aria-hidden="true">◎</span>
+              <span>Filmado en consultorio</span>
+            </div>
+            <div class="video-info-sep" aria-hidden="true"></div>
+            <div class="video-info-item">
+              <span class="video-info-icon" aria-hidden="true">⊕</span>
+              <span>Incluido en el curso</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: PARA QUIÉN ES === -->
+    <section class="audience-section">
+      <div class="audience-inner">
+
+        <p class="eyebrow audience-eyebrow animate-in">Audiencia del Curso</p>
+        <h2 class="audience-title section-title-hoverable animate-in" style="transition-delay: 0.1s">
+          <span class="hover-underline">Para profesionales y pacientes.</span>
+        </h2>
+        <p class="audience-subtitle animate-in" style="transition-delay: 0.2s">
+          El Dr. Frusso habla tanto al que quiere aprender a aplicar la técnica,
+          como al que quiere entender su dolor.
+        </p>
+
+        <div class="audience-grid">
+
+          <!-- Card profesionales -->
+          <div class="audience-card audience-card-pro animate-in">
+            <p class="audience-card-eyebrow">Profesionales de la Salud</p>
+            <div class="audience-card-icon">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="13" r="6" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+                <path d="M8 38c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M34 20v8M30 24h8" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="audience-card-body">
+              Médicos, kinesiólogos y fisioterapeutas que tratan dolor
+              musculoesquelético y quieren:
+            </p>
+            <ul class="audience-card-list">
+              <li>Incorporar una técnica segura y efectiva a su práctica</li>
+              <li>Diferenciarse en el manejo del dolor crónico</li>
+              <li>Aprender de la mano del referente latinoamericano en PIT</li>
+              <li>Obtener un certificado de aprobación del curso</li>
+            </ul>
+          </div>
+
+          <!-- Card pacientes -->
+          <div class="audience-card audience-card-patient animate-in" style="transition-delay: 0.15s">
+            <p class="audience-card-eyebrow">Pacientes con Dolor Crónico</p>
+            <div class="audience-card-icon">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="13" r="6" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+                <path d="M8 38c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M22 28c-3 2-5 5-5 8" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="audience-card-body">
+              Personas que padecen lumbalgia, dolor de rodilla u otras
+              condiciones musculoesqueléticas crónicas que quieren:
+            </p>
+            <ul class="audience-card-list">
+              <li>Entender qué les pasa y por qué persiste el dolor</li>
+              <li>Conocer opciones de tratamiento menos invasivas</li>
+              <li>Tomar decisiones informadas sobre su salud</li>
+              <li>Comprender el lenguaje médico con claridad</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: CONTENIDO DEL CURSO === -->
+    <section class="content-section" id="contenido">
+      <div class="content-inner">
+
+        <p class="eyebrow content-eyebrow animate-in">Módulo I · Ya Disponible</p>
+        <h2 class="content-title section-title-hoverable animate-in" style="transition-delay: 0.1s">
+          <span class="hover-underline">Dos patologías. Casos clínicos reales.</span>
+        </h2>
+        <!-- Énfasis filmado real -->
+        <div class="filmed-banner animate-in" style="transition-delay: 0.2s">
+          <span class="rec-dot" aria-hidden="true"></span>
+          <span class="filmed-banner-text">
+            Pacientes reales · Tratamientos reales · Filmados en consultorio
+          </span>
+        </div>
+        <p class="content-subtitle animate-in" style="transition-delay: 0.3s">
+          El Dr. Frusso aplica el PIT en pacientes reales, en cámara, sin cortes.
+          Ves exactamente lo que pasa en el consultorio: la técnica, la conversación y el seguimiento.
+        </p>
+
+        <div class="content-grid">
+
+          <!-- Capítulo 1 -->
+          <div class="chapter-card card-lift animate-in">
+            <p class="chapter-card-label">Cap. 01 · Disponible</p>
+            <h3 class="chapter-card-title">Lumbalgia crónica.</h3>
+            <ul class="chapter-card-list">
+              <li>Anatomía del nervio y fisiopatología del dolor lumbar</li>
+              <li>Identificación de los puntos de inyección</li>
+              <li>Técnica PIT aplicada en paciente real — sin cortes</li>
+              <li>Criterios de selección y seguimiento</li>
+              <li>Preguntas frecuentes del consultorio</li>
+            </ul>
+            <div class="chapter-card-badge chapter-card-badge-filmed">
+              <span class="rec-dot" aria-hidden="true"></span>
+              Caso clínico real · Filmado en consultorio
+            </div>
+          </div>
+
+          <!-- Capítulo 2 -->
+          <div class="chapter-card card-lift animate-in" style="transition-delay: 0.1s">
+            <p class="chapter-card-label">Cap. 02 · Disponible</p>
+            <h3 class="chapter-card-title">Dolor de rodilla.</h3>
+            <ul class="chapter-card-list">
+              <li>Anatomía periarticular y nervios de la rodilla</li>
+              <li>Zonas de inyección: safeno, ramos infrapatelares</li>
+              <li>Técnica PIT en rodilla — paciente real, sin cortes</li>
+              <li>Manejo del paciente con osteoartritis</li>
+              <li>Protocolo de sesiones y progresión</li>
+            </ul>
+            <div class="chapter-card-badge chapter-card-badge-filmed">
+              <span class="rec-dot" aria-hidden="true"></span>
+              Caso clínico real · Filmado en consultorio
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Barra de módulos -->
+        <div class="modules-bar animate-in" style="transition-delay: 0.2s">
+
+          <div class="module-row">
+            <span class="module-label">Módulo I</span>
+            <div class="module-bar-wrap">
+              <div class="module-bar-track">
+                <div class="module-bar-fill" style="width: 100%"></div>
+              </div>
+              <p class="module-desc">Lumbalgia · Rodilla</p>
+            </div>
+            <span class="module-status available">Disponible</span>
+          </div>
+
+          <div class="module-row coming-soon">
+            <span class="module-label">Módulo II</span>
+            <div class="module-bar-wrap">
+              <div class="module-bar-track">
+                <div class="module-bar-fill" style="width: 0%"></div>
+              </div>
+              <p class="module-desc">Contenido a confirmar con el Dr. Frusso</p>
+            </div>
+            <span class="module-status coming">Próximamente</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: SOBRE EL DR. FRUSSO === -->
+    <section class="doctor-section" id="doctor">
+      <div class="doctor-inner">
+
+        <!-- Columna izquierda: foto -->
+        <div class="animate-in">
+          <div class="doctor-photo-wrap">
+            <img
+              src="img/DSC_0028.jpg"
+              alt="Dr. Ricardo D. Frusso"
+              class="doctor-photo-main"
+              loading="lazy"
+            />
+            <img
+              src="img/DSC_0016.jpg"
+              alt="Dr. Frusso en congreso"
+              class="doctor-photo-secondary"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Columna derecha: bio + credenciales -->
+        <div>
+          <p class="eyebrow doctor-eyebrow animate-in">Docente · Referente Latinoamericano</p>
+          <h2 class="doctor-title section-title-hoverable animate-in" style="transition-delay: 0.1s">
+            <span class="hover-underline">30+ años acompañando el dolor crónico.</span>
+          </h2>
+
+          <div class="doctor-bio animate-in" style="transition-delay: 0.2s">
+            <p>
+              Médico de Familia egresado de la UBA en 1992. Más de tres décadas de práctica clínica
+              en el Hospital Italiano de Buenos Aires, donde fundó el Área de Medicina Músculo-esquelética
+              dentro del Servicio de Medicina Familiar.
+            </p>
+            <p>
+              Pionero en Argentina en la aplicación de Neuroproloterapia y PIT, formado directamente
+              por el <a href="https://www.lyftogtmed.com/" target="_blank" rel="noopener noreferrer" class="bio-link">Dr. John Lyftogt</a> — creador del método — desde 2012, y único instructor
+              autorizado para la enseñanza de la técnica en América Latina desde 2015.
+            </p>
+          </div>
+
+          <!-- Tabla de credenciales -->
+          <div class="credentials-table animate-in" style="transition-delay: 0.3s">
+            <div class="credentials-row">
+              <span class="credentials-key">Formación</span>
+              <span class="credentials-val">UBA · 1992</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Hospital</span>
+              <span class="credentials-val">Hospital Italiano de Buenos Aires</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Área actual</span>
+              <span class="credentials-val">Sección Reumatología · HIBA</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Especialidad</span>
+              <span class="credentials-val">Dolor músculo-esquelético y neuropático crónico</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Técnicas</span>
+              <span class="credentials-val">Proloterapia · PIT / Neuroproloterapia</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Certificación</span>
+              <span class="credentials-val">AAOM 2013-035 · Univ. Wisconsin</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Docencia PIT</span>
+              <span class="credentials-val">Autorizado por Dr. John Lyftogt — desde 2015</span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Creador PIT</span>
+              <span class="credentials-val">
+                <a href="https://www.lyftogtmed.com/" target="_blank" rel="noopener noreferrer" class="credentials-link">
+                  Dr. John Lyftogt · lyftogtmed.com →
+                </a>
+              </span>
+            </div>
+            <div class="credentials-row">
+              <span class="credentials-key">Matrícula</span>
+              <span class="credentials-val">M.N. 86.498</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: TESTIMONIOS === -->
+    <section class="testimonials-section">
+      <div class="testimonials-inner">
+
+        <p class="eyebrow testimonials-eyebrow animate-in">Testimonios</p>
+        <h2 class="testimonials-title section-title-hoverable animate-in" style="transition-delay: 0.1s">
+          <span class="hover-underline">Lo que dicen quienes ya lo hicieron.</span>
+        </h2>
+
+        <div class="testimonials-grid">
+
+          <!-- Testimonio 1 -->
+          <div class="testimonial-card animate-in">
+            <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+            <span class="testimonial-placeholder-note">Pendiente de aprobación</span>
+            <p class="testimonial-text">
+              [TESTIMONIO DE PROFESIONAL — completar con texto real del Dr. Frusso]
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="6" r="3" stroke="#BFBFBF" stroke-width="1.2"/>
+                  <path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#BFBFBF" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <p class="testimonial-author-name">[Nombre]</p>
+                <p class="testimonial-author-role">Médico clínico · [Ciudad]</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonio 2 -->
+          <div class="testimonial-card animate-in" style="transition-delay: 0.1s">
+            <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+            <span class="testimonial-placeholder-note">Pendiente de aprobación</span>
+            <p class="testimonial-text">
+              [TESTIMONIO DE PROFESIONAL — completar con texto real del Dr. Frusso]
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="6" r="3" stroke="#BFBFBF" stroke-width="1.2"/>
+                  <path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#BFBFBF" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <p class="testimonial-author-name">[Nombre]</p>
+                <p class="testimonial-author-role">Kinesióloga · [Ciudad]</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonio 3 -->
+          <div class="testimonial-card animate-in" style="transition-delay: 0.2s">
+            <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+            <span class="testimonial-placeholder-note">Pendiente de aprobación</span>
+            <p class="testimonial-text">
+              [TESTIMONIO DE PACIENTE — completar con texto real del Dr. Frusso]
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="6" r="3" stroke="#BFBFBF" stroke-width="1.2"/>
+                  <path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#BFBFBF" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <p class="testimonial-author-name">[Nombre]</p>
+                <p class="testimonial-author-role">Paciente · [Ciudad]</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: ANTES / DESPUÉS === -->
+    <section class="case-section" id="caso">
+      <div class="case-inner">
+
+        <p class="eyebrow case-eyebrow animate-in">Evolución Clínica · Caso de referencia</p>
+        <h2 class="case-title section-title-hoverable animate-in" style="transition-delay:0.1s">
+          <span class="hover-underline">Del dolor crónico a la vida cotidiana.</span>
+        </h2>
+        <p class="case-subtitle animate-in" style="transition-delay:0.2s">
+          El Dr. Frusso incorporará un caso clínico real con autorización del paciente.
+          El esquema a continuación muestra el tipo de evolución que se documenta en el curso.
+        </p>
+
+        <div class="case-grid animate-in" style="transition-delay:0.25s">
+
+          <!-- Antes -->
+          <div class="case-card case-before">
+            <div class="case-card-header">
+              <span class="case-tag case-tag-before">Antes del tratamiento</span>
+            </div>
+            <p class="case-card-patient">
+              <span class="label" style="color:var(--ink-40)">Perfil · </span>
+              [Nombre], [edad] años · [Ciudad]
+            </p>
+            <ul class="case-list">
+              <li>Lumbalgia crónica de [X] años de evolución</li>
+              <li>Dolor irradiado a miembro inferior derecho</li>
+              <li>Sin respuesta a AINE ni fisioterapia convencional</li>
+              <li>Escala EVA: 8/10 en reposo</li>
+              <li>Imposibilidad de trabajar con normalidad</li>
+            </ul>
+            <p class="case-placeholder-note">
+              [COMPLETAR con caso real del Dr. Frusso — con autorización del paciente]
+            </p>
+          </div>
+
+          <!-- Flecha -->
+          <div class="case-arrow" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M6 16h20M20 10l6 6-6 6" stroke="var(--azul)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="case-arrow-label label" style="color:var(--ink-40)">4–8 sesiones</span>
+          </div>
+
+          <!-- Después -->
+          <div class="case-card case-after">
+            <div class="case-card-header">
+              <span class="case-tag case-tag-after">Después del tratamiento</span>
+            </div>
+            <p class="case-card-patient">
+              <span class="label" style="color:var(--ink-40)">Seguimiento · </span>
+              [X] semanas · [X] sesiones
+            </p>
+            <ul class="case-list">
+              <li>Reducción del dolor: EVA 8 → 2</li>
+              <li>Retorno a actividad laboral plena</li>
+              <li>Desaparición del componente irradiado</li>
+              <li>Sin necesidad de medicación</li>
+              <li>Mantenimiento a los [X] meses de seguimiento</li>
+            </ul>
+            <p class="case-placeholder-note">
+              [COMPLETAR con caso real del Dr. Frusso — con autorización del paciente]
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Cita / testimonio placeholder -->
+        <div class="case-quote animate-in" style="transition-delay:0.35s">
+          <div class="case-quote-pipe" aria-hidden="true"></div>
+          <div>
+            <p class="case-quote-text">
+              "[TESTIMONIO DEL PACIENTE sobre su experiencia con el tratamiento — completar con texto real autorizado por el Dr. Frusso]"
+            </p>
+            <p class="case-quote-author label" style="letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-40); margin-top:12px">
+              — [Nombre], [edad] años · [Ciudad]
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: PRECIO + CTA FINAL === -->
+    <section class="pricing-section">
+      <div class="pricing-inner">
+
+        <p class="eyebrow pricing-eyebrow animate-in">Acceso Permanente · Pago Único</p>
+        <h2 class="pricing-title animate-in display" style="transition-delay: 0.1s">
+          Empezá cuando quieras.
+        </h2>
+
+        <p class="pricing-price animate-in" style="transition-delay: 0.2s">USD 97.99</p>
+        <p class="pricing-price-note animate-in" style="transition-delay: 0.25s">
+          pago único, acceso permanente
+        </p>
+
+        <div class="pricing-discount animate-in" style="transition-delay: 0.3s">
+          <span class="pricing-discount-label">Usá el código:</span>
+          <span class="pricing-code" title="Hacé clic para seleccionar el código">PIT10OFF</span>
+          <span class="pricing-discount-pct">→ 10% de descuento</span>
+        </div>
+
+        <a
+          href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-white pricing-cta animate-in"
+          style="transition-delay: 0.4s; font-size: 17px; padding: 18px 40px;"
+        >
+          Acceder al curso en Hotmart →
+        </a>
+
+        <p class="pricing-payments animate-in" style="transition-delay: 0.5s">
+          Mercado Pago · Tarjeta de crédito/débito · Transferencia · PayPal
+        </p>
+
+        <p class="pricing-certificate animate-in" style="transition-delay: 0.55s">
+          Al finalizar el curso recibís un certificado de aprobación emitido por el Dr. Frusso.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: GARANTÍA === -->
+    <section class="guarantee-section">
+      <div class="guarantee-inner">
+
+        <div class="guarantee-item animate-in">
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 3L4 7v8c0 5.5 4.3 10.6 10 12 5.7-1.4 10-6.5 10-12V7L14 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M10 14l3 3 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="guarantee-label">Pago seguro</p>
+            <p class="guarantee-desc">Procesado por Hotmart con encriptación SSL</p>
+          </div>
+        </div>
+
+        <div class="guarantee-sep" aria-hidden="true"></div>
+
+        <div class="guarantee-item animate-in" style="transition-delay:0.1s">
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M14 9v5l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="guarantee-label">Acceso inmediato</p>
+            <p class="guarantee-desc">Empezás a ver el contenido en minutos</p>
+          </div>
+        </div>
+
+        <div class="guarantee-sep" aria-hidden="true"></div>
+
+        <div class="guarantee-item animate-in" style="transition-delay:0.2s">
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="22" height="22" rx="4" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M8 14h12M8 9h12M8 19h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="guarantee-label">Acceso permanente</p>
+            <p class="guarantee-desc">Sin fecha de vencimiento · Avanzás a tu ritmo</p>
+          </div>
+        </div>
+
+        <div class="guarantee-sep" aria-hidden="true"></div>
+
+        <div class="guarantee-item animate-in" style="transition-delay:0.3s">
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 3l2.5 7.5H24l-6.2 4.5 2.4 7.5L14 18l-6.2 4.5 2.4-7.5L4 10.5h7.5L14 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="guarantee-label">Certificado de aprobación</p>
+            <p class="guarantee-desc">Emitido por el Dr. Frusso al completar el módulo</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === SECCIÓN: FAQ === -->
+    <section class="faq-section">
+      <div class="faq-inner">
+
+        <p class="eyebrow faq-eyebrow animate-in">Preguntas Frecuentes</p>
+        <h2 class="faq-title section-title-hoverable animate-in" style="transition-delay: 0.1s">
+          <span class="hover-underline">Lo que más nos preguntan.</span>
+        </h2>
+
+        <div class="faq-list animate-in" style="transition-delay: 0.2s">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Para quién es este curso?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                El curso está diseñado tanto para profesionales de la salud (médicos, kinesiólogos,
+                fisioterapeutas) que quieran incorporar el PIT a su práctica, como para pacientes con
+                dolor crónico que quieran entender su condición y las opciones de tratamiento disponibles.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Qué es el PIT y en qué se diferencia de la Proloterapia?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                El PIT (Perineural Injection Treatment) es una técnica que actúa sobre los nervios
+                subcutáneos periféricos sensibilizados mediante inyecciones de glucosa al 5%. La
+                Proloterapia, en cambio, actúa sobre ligamentos y tendones usando concentraciones más
+                altas de dextrosa. Son técnicas complementarias; el Dr. Frusso enseña ambas.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Cuánto dura el curso?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                El Módulo I comprende dos capítulos (Lumbalgia y Rodilla) con clases teóricas y casos
+                clínicos filmados. Podés avanzar a tu propio ritmo. El acceso es permanente: una vez que
+                accedés, el contenido es tuyo sin fecha de vencimiento.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Necesito conocimientos previos?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                Para profesionales de la salud, se asumen conocimientos básicos de anatomía.
+                Para pacientes, el Dr. Frusso explica todos los conceptos desde cero con un lenguaje claro
+                y accesible. No se requiere formación médica previa para comprender el contenido.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿El curso tiene certificado?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                Sí. Al completar el Módulo I recibís un certificado de aprobación. El certificado
+                es emitido por el Dr. Ricardo D. Frusso en su carácter de docente autorizado por el
+                Dr. John Lyftogt para la enseñanza del PIT en América Latina.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Cómo accedo después de comprar?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                El curso se dicta a través de Hotmart. Inmediatamente después de tu compra recibís
+                un email con los datos de acceso a la plataforma, donde encontrás todos los videos
+                y materiales organizados por capítulo.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Puedo aplicar el PIT después de hacer el curso?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                El curso te da los fundamentos teóricos y la guía visual de casos reales para
+                comenzar a incorporar la técnica. Para profesionales de la salud, la práctica clínica
+                requiere criterio propio y, idealmente, supervisión en los primeros casos.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- === SECCIÓN: NEWSLETTER + INSTAGRAM === -->
+  <section class="connect-section">
+    <div class="connect-inner">
+
+      <!-- Newsletter -->
+      <div class="connect-newsletter animate-in">
+        <p class="eyebrow connect-eyebrow">Mantenete al día</p>
+        <h2 class="connect-title">
+          <span class="hover-underline">Novedades del curso y del método.</span>
+        </h2>
+        <p class="connect-subtitle">
+          Avisamos cuando hay nuevo contenido, módulos disponibles
+          o actualizaciones de la técnica. Sin spam.
+        </p>
+
+        <!-- Nota: conectar action al proveedor de email (ej. Mailchimp, Brevo, Kit) -->
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="newsletter-input-wrap">
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@email.com"
+              class="newsletter-input"
+              required
+              autocomplete="email"
+              aria-label="Tu dirección de email"
+            />
+            <button type="submit" class="newsletter-btn">
+              Suscribirme →
+            </button>
+          </div>
+          <p class="newsletter-note">
+            <!-- COMPLETAR: reemplazar el action del form con la URL de tu proveedor de email -->
+            Sin spam · Podés darte de baja cuando quieras
+          </p>
+          <p class="newsletter-success" id="newsletterSuccess" aria-live="polite">
+            ¡Listo! Te avisamos cuando haya novedades.
+          </p>
+        </form>
+      </div>
+
+      <!-- Divisor vertical -->
+      <div class="connect-divider" aria-hidden="true"></div>
+
+      <!-- Instagram -->
+      <div class="connect-instagram animate-in" style="transition-delay: 0.15s">
+        <p class="eyebrow connect-eyebrow">Seguinos</p>
+        <h2 class="connect-title">
+          <span class="hover-underline">Casos, técnica y práctica clínica real.</span>
+        </h2>
+        <p class="connect-subtitle">
+          El Dr. Frusso comparte contenido clínico, explicaciones del método
+          y actualizaciones desde el consultorio.
+        </p>
+        <a
+          href="https://www.instagram.com/drfrussoricardo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="instagram-btn"
+        >
+          <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.7"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          <span>@drfrussoricardo</span>
+        </a>
+        <p class="instagram-handle-note">Instagram · Dr. Ricardo D. Frusso</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- === SECCIÓN: FOOTER === -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-grid">
+
+        <!-- Columna 1: Logo + tagline -->
+        <div>
+          <a href="#" class="logo" aria-label="Dr. Ricardo D. Frusso">
+            <span class="logo-dr" style="color:#fff">DR.</span>
+            <span class="logo-pipe" aria-hidden="true"></span>
+            <span class="logo-name">
+              <span style="color:#fff">RICARDO</span>
+              <span style="color:#fff">D. FRUSSO</span>
+            </span>
+          </a>
+          <p class="footer-logo-tagline">
+            Neuroproloterapia · PIT · Dolor Crónico<br>
+            Hospital Italiano de Buenos Aires
+          </p>
+        </div>
+
+        <!-- Columna 2: Links -->
+        <div>
+          <p class="footer-col-title">Curso</p>
+          <ul class="footer-links">
+            <li><a href="#contenido">Módulo I — Lumbalgia</a></li>
+            <li><a href="#contenido">Módulo I — Rodilla</a></li>
+            <li><a href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P" target="_blank" rel="noopener noreferrer">Acceder en Hotmart</a></li>
+          </ul>
+          <p class="footer-col-title" style="margin-top: 32px;">Docente</p>
+          <ul class="footer-links">
+            <li><a href="#doctor">Sobre el Dr. Frusso</a></li>
+            <li><a href="https://www.instagram.com/drfrussoricardo" target="_blank" rel="noopener noreferrer">Instagram @drfrussoricardo</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Contacto -->
+        <div>
+          <p class="footer-col-title">Contacto</p>
+          <p class="footer-contact-item">Amenabar 2446, Belgrano, CABA</p>
+          <p class="footer-contact-item">
+            <a href="tel:+5491154582558">+54 9 11 5458 2558</a>
+          </p>
+          <p class="footer-contact-item">
+            <a href="mailto:ricardo.frusso@hospitalitaliano.org.ar">
+              ricardo.frusso@hospitalitaliano.org.ar
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Cierre footer -->
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">
+          © 2026 Dr. Ricardo D. Frusso · M.N. 86.498
+        </p>
+        <a href="https://hotmart.com/es/marketplace/productos/hagsxd-pit-modulo-i-lumbalgia-rodilla-envo4/I105190498P" target="_blank" rel="noopener noreferrer" class="footer-bottom-url">
+          hotm.io/cursospit
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* === SCROLL TOP === */
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* === CURSOR PERSONALIZADO === */
+    const cursor = document.getElementById('cursor');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      cursor.style.opacity = '1';
+    });
+
+    const interactiveEls = document.querySelectorAll('a, button, [role="button"], .faq-question, .chapter-card, .pricing-code');
+    interactiveEls.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    /* === NAVBAR SCROLL BEHAVIOR === */
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    /* === MOBILE MENU === */
+    const hamburger = document.getElementById('hamburger');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    function openMobile() {
+      hamburger.classList.add('open');
+      mobileDrawer.classList.add('open');
+      mobileOverlay.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileDrawer.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      if (mobileDrawer.classList.contains('open')) {
+        closeMobile();
+      } else {
+        openMobile();
+      }
+    });
+
+    mobileOverlay.addEventListener('click', closeMobile);
+
+    /* === HERO STAGGERED REVEAL === */
+    const heroReveal = [
+      { id: 'hero-eyebrow',  delay: 0 },
+      { id: 'hero-line1',    delay: 150 },
+      { id: 'hero-line2',    delay: 280 },
+      { id: 'hero-subtitle', delay: 430 },
+      { id: 'hero-ctas',     delay: 580 },
+      { id: 'hero-stats',    delay: 730 },
+    ];
+
+    heroReveal.forEach(({ id, delay }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, delay + 200);
+    });
+
+    // Pipe inline: revelar junto con line1
+    setTimeout(() => {
+      const pipe = document.getElementById('hero-pipe');
+      if (pipe) pipe.classList.add('revealed');
+    }, 350);
+
+    /* === INTERSECTION OBSERVER — SCROLL ANIMATIONS === */
+    const animatedEls = document.querySelectorAll('.animate-in');
+
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -60px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseFloat(entry.target.style.transitionDelay || '0') * 1000;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animatedEls.forEach(el => {
+      // Remove existing transition-delay from inline style so we handle it ourselves
+      const existingDelay = el.style.transitionDelay;
+      el.dataset.delay = existingDelay || '0s';
+      el.style.transitionDelay = '0s';
+      observer.observe(el);
+    });
+
+    // Override: apply staggered delay on visibility
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const children = entry.target.querySelectorAll('.animate-in');
+          children.forEach((child, i) => {
+            const baseDelay = parseFloat(child.dataset.delay || '0') * 1000;
+            setTimeout(() => {
+              child.classList.add('visible');
+            }, baseDelay);
+          });
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Re-initialize with proper staggering per section
+    const sections = document.querySelectorAll('section, footer');
+    sections.forEach(section => {
+      const items = section.querySelectorAll('.animate-in');
+      items.forEach((item, i) => {
+        const explicitDelay = parseFloat(item.style.transitionDelay || item.dataset.delay || '0') * 1000;
+        item.dataset.computedDelay = Math.max(explicitDelay, i * 80);
+      });
+    });
+
+    // Clean IntersectionObserver — single unified approach
+    observer.disconnect();
+    const finalObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseFloat(entry.target.dataset.computedDelay || 0);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          finalObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    animatedEls.forEach(el => finalObserver.observe(el));
+
+    /* === FAQ ACCORDION === */
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        // Cerrar todos
+        faqItems.forEach(other => {
+          other.classList.remove('open');
+          other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Abrir el clickeado (si estaba cerrado)
+        if (!isOpen) {
+          item.classList.add('open');
+          question.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* === CÓDIGO DE DESCUENTO: COPIAR AL PORTAPAPELES === */
+    const discountCode = document.querySelector('.pricing-code');
+    if (discountCode) {
+      discountCode.addEventListener('click', () => {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText('PIT10OFF').then(() => {
+            const original = discountCode.textContent;
+            discountCode.textContent = '¡Copiado!';
+            setTimeout(() => {
+              discountCode.textContent = original;
+            }, 1800);
+          });
+        }
+      });
+    }
+
+    /* === NEWSLETTER FORM === */
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterSuccess = document.getElementById('newsletterSuccess');
+
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = newsletterForm.querySelector('.newsletter-input');
+        if (!input.value || !input.value.includes('@')) {
+          input.style.borderColor = '#EF4444';
+          setTimeout(() => { input.style.borderColor = ''; }, 2000);
+          return;
+        }
+        /* COMPLETAR: aquí va el fetch/POST al proveedor de email (Mailchimp, Brevo, Kit, etc.) */
+        /* Ejemplo Brevo: fetch('https://sibforms.com/serve/XXXX', { method: 'POST', ... }) */
+        input.value = '';
+        newsletterSuccess.classList.add('visible');
+        setTimeout(() => newsletterSuccess.classList.remove('visible'), 5000);
+      });
+    }
+
+    /* === NAVBAR LINKS ACTIVOS === */
+    const navSections = [
+      { id: 'pit',      link: document.querySelector('.navbar-links a[href="#pit"]') },
+      { id: 'doctor',   link: document.querySelector('.navbar-links a[href="#doctor"]') },
+    ];
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const match = navSections.find(s => s.id === entry.target.id);
+        if (!match || !match.link) return;
+        if (entry.isIntersecting) {
+          navSections.forEach(s => s.link && s.link.classList.remove('nav-active'));
+          match.link.classList.add('nav-active');
+        }
+      });
+    }, { threshold: 0.25 });
+
+    navSections.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) navObserver.observe(el);
+    });
+
+    /* === STICKY BAR MOBILE === */
+    const stickyBar = document.getElementById('stickyBar');
+    const pricingSection = document.querySelector('.pricing-section');
+
+    if (stickyBar && pricingSection) {
+      const stickyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          /* Mostrar la bar cuando el hero ya no es visible y aún no llegamos al pricing */
+          if (!entry.isIntersecting) {
+            stickyBar.classList.add('visible');
+          } else {
+            stickyBar.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0 });
+
+      const heroSection = document.getElementById('hero');
+      if (heroSection) stickyObserver.observe(heroSection);
+
+      /* Ocultar también cuando el pricing está en pantalla (ya hay CTA visible) */
+      const pricingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) stickyBar.classList.remove('visible');
+        });
+      }, { threshold: 0.2 });
+
+      pricingObserver.observe(pricingSection);
+    }
+  </script>
+
+</body>
+</html>
