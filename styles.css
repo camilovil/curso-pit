@@ -2823,8 +2823,8 @@ h4, .h4 {
   /* PIT: panel técnico compacto */
   .pit-panel-row:nth-child(n+8) { display: none; }
 
-  /* Credentials: ocultar tabla entera en mobile */
-  .credentials-table { display: none; }
+  /* Credentials: ocultar tabla en mobile (el botón ya está mobile-hidden) */
+  .credentials-table { display: none !important; }
 
   /* FAQ: ocultar la última pregunta */
   .faq-item:last-child { display: none; }
@@ -2904,6 +2904,7 @@ h4, .h4 {
 .collapse-body.open {
   max-height: 2400px;
   opacity: 1;
+  padding-top: 20px;
 }
 
 /* Botón de sección colapsable — prominente, invita al click */
