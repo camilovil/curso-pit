@@ -33,7 +33,7 @@ img {
 :root {
   --negro: #0A0A0A;
   --hueso: #FAFAF7;
-  --azul: #2563EB;
+  --azul: #1d58e0;
   --azul-deep: #1E3A8A;
   --azul-tint: #EFF4FE;
   --ink-60: #404040;
@@ -2580,7 +2580,7 @@ h4, .h4 {
 .footer-logo-tagline {
   font-family: var(--font-sans);
   font-size: 14px;
-  color: var(--ink-40);
+  color: #9ca3af;
   margin-top: 16px;
   line-height: 22px;
 }
