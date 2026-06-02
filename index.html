@@ -3685,8 +3685,16 @@
           o actualizaciones de la técnica. Sin spam.
         </p>
 
-        <!-- Nota: conectar action al proveedor de email (ej. Mailchimp, Brevo, Kit) -->
-        <form class="newsletter-form" id="newsletterForm" novalidate>
+        <!-- Formspree: reemplazar YOUR_FORM_ID con el ID que te da formspree.io -->
+        <form
+          class="newsletter-form"
+          id="newsletterForm"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          novalidate
+        >
+          <input type="hidden" name="_subject" value="Nueva suscripción — Curso PIT">
+          <input type="hidden" name="_language" value="es">
           <div class="newsletter-input-wrap">
             <input
               type="email"
@@ -3702,7 +3710,6 @@
             </button>
           </div>
           <p class="newsletter-note">
-            <!-- COMPLETAR: reemplazar el action del form con la URL de tu proveedor de email -->
             Sin spam · Podés darte de baja cuando quieras
           </p>
           <p class="newsletter-success" id="newsletterSuccess" aria-live="polite">
@@ -4025,24 +4032,48 @@
       });
     }
 
-    /* === NEWSLETTER FORM === */
+    /* === NEWSLETTER FORM — Formspree === */
     const newsletterForm = document.getElementById('newsletterForm');
     const newsletterSuccess = document.getElementById('newsletterSuccess');
 
     if (newsletterForm) {
-      newsletterForm.addEventListener('submit', (e) => {
+      newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const input = newsletterForm.querySelector('.newsletter-input');
+        const btn   = newsletterForm.querySelector('.newsletter-btn');
+
         if (!input.value || !input.value.includes('@')) {
-          input.style.borderColor = '#EF4444';
-          setTimeout(() => { input.style.borderColor = ''; }, 2000);
+          input.style.outline = '2px solid #EF4444';
+          setTimeout(() => { input.style.outline = ''; }, 2000);
           return;
         }
-        /* COMPLETAR: aquí va el fetch/POST al proveedor de email (Mailchimp, Brevo, Kit, etc.) */
-        /* Ejemplo Brevo: fetch('https://sibforms.com/serve/XXXX', { method: 'POST', ... }) */
-        input.value = '';
-        newsletterSuccess.classList.add('visible');
-        setTimeout(() => newsletterSuccess.classList.remove('visible'), 5000);
+
+        const originalText = btn.textContent;
+        btn.textContent = 'Enviando…';
+        btn.disabled = true;
+
+        try {
+          const res = await fetch(newsletterForm.action, {
+            method: 'POST',
+            body: new FormData(newsletterForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            input.value = '';
+            newsletterSuccess.classList.add('visible');
+            setTimeout(() => newsletterSuccess.classList.remove('visible'), 6000);
+          } else {
+            const data = await res.json();
+            const msg = data.errors?.map(e => e.message).join(', ') || 'Error al enviar. Intentá de nuevo.';
+            alert(msg);
+          }
+        } catch {
+          alert('No se pudo conectar. Verificá tu conexión e intentá de nuevo.');
+        } finally {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }
       });
     }
 
