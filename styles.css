@@ -2919,6 +2919,7 @@ h4, .h4 {
   border-radius: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-60);
@@ -2970,6 +2971,7 @@ h4, .h4 {
   margin-top: 20px;
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--azul);
@@ -3019,6 +3021,7 @@ h4, .h4 {
   margin-top: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--azul);
