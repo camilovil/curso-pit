@@ -181,11 +181,6 @@
               capacidad de regulación. El PIT restaura esa función, reduciendo el
               dolor desde su origen neurológico.
             </p>
-            <p>
-              El tratamiento requiere entre 4 y 8 sesiones espaciadas una vez
-              por semana, y puede combinarse con otras técnicas de medicina
-              musculoesquelética.
-            </p>
           </div>
         </div>
 
@@ -233,7 +228,7 @@
       </div>
 
       <!-- Strip de fotos clínicas -->
-      <div class="pit-photo-strip">
+      <div class="pit-photo-strip mobile-hidden">
         <div class="pit-photo-item">
           <picture>
             <source srcset="img/DSC_0086.webp" type="image/webp">
@@ -259,71 +254,11 @@
 
     </section>
 
-    <!-- === SECCIÓN: VIDEO === -->
-    <section class="video-section" id="video">
-      <div class="video-inner">
-
-        <div class="video-meta animate-in">
-          <p class="eyebrow video-eyebrow">Vista previa del curso</p>
-          <h2 class="video-title section-title-hoverable">
-            <span class="hover-underline">El método, explicado por quien lo enseña.</span>
-          </h2>
-          <p class="video-subtitle">
-            El Dr. Frusso explica en cámara qué es el PIT, cómo actúa sobre el nervio
-            periférico y qué puede esperar un paciente en la primera sesión.
-          </p>
-        </div>
-
-        <!-- Placeholder del video -->
-        <div class="video-player animate-in" style="transition-delay:0.15s" id="videoPlaceholder">
-          <div class="video-bg-blur" aria-hidden="true"></div>
-
-          <!-- Thumbnail placeholder -->
-          <div class="video-thumb" aria-label="Video del Dr. Frusso — próximamente disponible" style="background-image: url('img/DSC_0086.jpg'); background-size: cover; background-position: center 30%;">
-            <div class="video-thumb-content">
-              <div class="video-play-btn" id="videoPlayBtn" role="button" tabindex="0" aria-label="Reproducir video">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                  <path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="#fff"/>
-                </svg>
-              </div>
-              <div class="video-thumb-meta">
-                <p class="video-thumb-label eyebrow" style="color:rgba(255,255,255,0.5); letter-spacing:0.16em">
-                  Video · Próximamente
-                </p>
-                <p class="video-thumb-title">
-                  Introducción al PIT con el Dr. Ricardo D. Frusso
-                </p>
-                <!-- COMPLETAR: reemplazar este bloque con el iframe de YouTube/Vimeo cuando el video esté listo -->
-                <!-- Ejemplo: <iframe src="https://www.youtube.com/embed/VIDEO_ID" ...></iframe> -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Duración / datos del video -->
-          <div class="video-info">
-            <div class="video-info-item">
-              <span class="video-info-icon" aria-hidden="true">▶</span>
-              <span>[COMPLETAR duración]</span>
-            </div>
-            <div class="video-info-sep" aria-hidden="true"></div>
-            <div class="video-info-item">
-              <span class="video-info-icon" aria-hidden="true">◎</span>
-              <span>Filmado en consultorio</span>
-            </div>
-            <div class="video-info-sep" aria-hidden="true"></div>
-            <div class="video-info-item">
-              <span class="video-info-icon" aria-hidden="true">⊕</span>
-              <span>Incluido en el curso</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
+    <!-- === SECCIÓN: VIDEO — agregar cuando el video esté listo === -->
+    <!-- <section class="video-section" id="video">...</section> -->
 
     <!-- === SECCIÓN: PARA QUIÉN ES === -->
-    <section class="audience-section">
+    <section class="audience-section mobile-hidden">
       <div class="audience-inner">
 
         <p class="eyebrow audience-eyebrow animate-in">Audiencia del Curso</p>
@@ -355,7 +290,6 @@
               <li>Incorporar una técnica segura y efectiva a su práctica</li>
               <li>Diferenciarse en el manejo del dolor crónico</li>
               <li>Aprender de la mano del referente latinoamericano en PIT</li>
-              <li>Obtener un certificado de aprobación del curso</li>
             </ul>
           </div>
 
@@ -377,7 +311,6 @@
               <li>Entender qué les pasa y por qué persiste el dolor</li>
               <li>Conocer opciones de tratamiento menos invasivas</li>
               <li>Tomar decisiones informadas sobre su salud</li>
-              <li>Comprender el lenguaje médico con claridad</li>
             </ul>
           </div>
 
@@ -416,7 +349,6 @@
               <li>Identificación de los puntos de inyección</li>
               <li>Técnica PIT aplicada en paciente real — sin cortes</li>
               <li>Criterios de selección y seguimiento</li>
-              <li>Preguntas frecuentes del consultorio</li>
             </ul>
             <div class="chapter-card-badge chapter-card-badge-filmed">
               <span class="rec-dot" aria-hidden="true"></span>
@@ -433,7 +365,6 @@
               <li>Zonas de inyección: safeno, ramos infrapatelares</li>
               <li>Técnica PIT en rodilla — paciente real, sin cortes</li>
               <li>Manejo del paciente con osteoartritis</li>
-              <li>Protocolo de sesiones y progresión</li>
             </ul>
             <div class="chapter-card-badge chapter-card-badge-filmed">
               <span class="rec-dot" aria-hidden="true"></span>
@@ -444,7 +375,7 @@
         </div>
 
         <!-- Barra de módulos -->
-        <div class="modules-bar animate-in" style="transition-delay: 0.2s">
+        <div class="modules-bar mobile-hidden animate-in" style="transition-delay: 0.2s">
 
           <div class="module-row">
             <span class="module-label">Módulo I</span>
@@ -522,7 +453,11 @@
           </div>
 
           <!-- Tabla de credenciales -->
-          <div class="credentials-table animate-in" style="transition-delay: 0.3s">
+          <button class="credentials-toggle animate-in" id="credentialsToggle" aria-expanded="false" style="transition-delay: 0.3s">
+            <span class="credentials-toggle-label">Ver credenciales completas</span>
+            <span class="credentials-toggle-arrow" aria-hidden="true">↓</span>
+          </button>
+          <div class="credentials-table" id="credentialsTable" aria-hidden="true">
             <div class="credentials-row">
               <span class="credentials-key">Formación</span>
               <span class="credentials-val">UBA · 1992</span>
@@ -540,24 +475,8 @@
               <span class="credentials-val">Dolor músculo-esquelético y neuropático crónico</span>
             </div>
             <div class="credentials-row">
-              <span class="credentials-key">Técnicas</span>
-              <span class="credentials-val">Proloterapia · PIT / Neuroproloterapia</span>
-            </div>
-            <div class="credentials-row">
-              <span class="credentials-key">Certificación</span>
-              <span class="credentials-val">AAOM 2013-035 · Univ. Wisconsin</span>
-            </div>
-            <div class="credentials-row">
               <span class="credentials-key">Docencia PIT</span>
               <span class="credentials-val">Autorizado por Dr. John Lyftogt — desde 2015</span>
-            </div>
-            <div class="credentials-row">
-              <span class="credentials-key">Creador PIT</span>
-              <span class="credentials-val">
-                <a href="https://www.lyftogtmed.com/" target="_blank" rel="noopener noreferrer" class="credentials-link">
-                  Dr. John Lyftogt · lyftogtmed.com →
-                </a>
-              </span>
             </div>
             <div class="credentials-row">
               <span class="credentials-key">Matrícula</span>
@@ -570,7 +489,7 @@
     </section>
 
     <!-- === SECCIÓN: TESTIMONIOS === -->
-    <section class="testimonials-section">
+    <section class="testimonials-section mobile-hidden">
       <div class="testimonials-inner">
 
         <p class="eyebrow testimonials-eyebrow animate-in">Testimonios</p>
@@ -648,7 +567,7 @@
     </section>
 
     <!-- === SECCIÓN: ANTES / DESPUÉS === -->
-    <section class="case-section" id="caso">
+    <section class="case-section mobile-hidden" id="caso">
       <div class="case-inner">
 
         <p class="eyebrow case-eyebrow animate-in">Evolución Clínica · Caso de referencia</p>
@@ -772,7 +691,7 @@
     </section>
 
     <!-- === SECCIÓN: GARANTÍA === -->
-    <section class="guarantee-section">
+    <section class="guarantee-section mobile-hidden">
       <div class="guarantee-inner">
 
         <div class="guarantee-item animate-in">
@@ -862,21 +781,6 @@
 
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
-              <span>¿Qué es el PIT y en qué se diferencia de la Proloterapia?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" role="region">
-              <div class="faq-answer-inner">
-                El PIT (Perineural Injection Treatment) es una técnica que actúa sobre los nervios
-                subcutáneos periféricos sensibilizados mediante inyecciones de glucosa al 5%. La
-                Proloterapia, en cambio, actúa sobre ligamentos y tendones usando concentraciones más
-                altas de dextrosa. Son técnicas complementarias; el Dr. Frusso enseña ambas.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
               <span>¿Cuánto dura el curso?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
@@ -903,47 +807,56 @@
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿El curso tiene certificado?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" role="region">
-              <div class="faq-answer-inner">
-                Sí. Al completar el Módulo I recibís un certificado de aprobación. El certificado
-                es emitido por el Dr. Ricardo D. Frusso en su carácter de docente autorizado por el
-                Dr. John Lyftogt para la enseñanza del PIT en América Latina.
+          <div class="faq-extra" id="faqExtra">
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>¿El curso tiene certificado?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  Sí. Al completar el Módulo I recibís un certificado de aprobación. El certificado
+                  es emitido por el Dr. Ricardo D. Frusso en su carácter de docente autorizado por el
+                  Dr. John Lyftogt para la enseñanza del PIT en América Latina.
+                </div>
               </div>
             </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>¿Cómo accedo después de comprar?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  El curso se dicta a través de Hotmart. Inmediatamente después de tu compra recibís
+                  un email con los datos de acceso a la plataforma, donde encontrás todos los videos
+                  y materiales organizados por capítulo.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>¿Puedo aplicar el PIT después de hacer el curso?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  El curso te da los fundamentos teóricos y la guía visual de casos reales para
+                  comenzar a incorporar la técnica. Para profesionales de la salud, la práctica clínica
+                  requiere criterio propio y, idealmente, supervisión en los primeros casos.
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Cómo accedo después de comprar?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" role="region">
-              <div class="faq-answer-inner">
-                El curso se dicta a través de Hotmart. Inmediatamente después de tu compra recibís
-                un email con los datos de acceso a la plataforma, donde encontrás todos los videos
-                y materiales organizados por capítulo.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Puedo aplicar el PIT después de hacer el curso?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" role="region">
-              <div class="faq-answer-inner">
-                El curso te da los fundamentos teóricos y la guía visual de casos reales para
-                comenzar a incorporar la técnica. Para profesionales de la salud, la práctica clínica
-                requiere criterio propio y, idealmente, supervisión en los primeros casos.
-              </div>
-            </div>
-          </div>
+          <button class="faq-more-btn" id="faqMoreBtn" aria-expanded="false">
+            <span class="faq-more-label">Ver más preguntas</span>
+            <span class="faq-more-arrow" aria-hidden="true">↓</span>
+          </button>
 
         </div>
       </div>
@@ -1474,6 +1387,37 @@
 
       // Arrancar después de que el elemento se revela
       setTimeout(startTypewriter, 660 + 200 + 80);
+    }
+
+    /* === CREDENCIALES TOGGLE === */
+    const credentialsToggle = document.getElementById('credentialsToggle');
+    const credentialsTable  = document.getElementById('credentialsTable');
+
+    if (credentialsToggle && credentialsTable) {
+      credentialsToggle.addEventListener('click', () => {
+        const isOpen = credentialsTable.classList.contains('open');
+        credentialsTable.classList.toggle('open');
+        credentialsToggle.classList.toggle('open');
+        credentialsToggle.setAttribute('aria-expanded', String(!isOpen));
+        credentialsTable.setAttribute('aria-hidden', String(isOpen));
+        credentialsToggle.querySelector('.credentials-toggle-label').textContent = isOpen ? 'Ver credenciales completas' : 'Ocultar credenciales';
+        credentialsToggle.querySelector('.credentials-toggle-arrow').textContent = isOpen ? '↓' : '↑';
+      });
+    }
+
+    /* === FAQ VER MÁS === */
+    const faqMoreBtn = document.getElementById('faqMoreBtn');
+    const faqExtra   = document.getElementById('faqExtra');
+
+    if (faqMoreBtn && faqExtra) {
+      faqMoreBtn.addEventListener('click', () => {
+        const isOpen = faqExtra.classList.contains('open');
+        faqExtra.classList.toggle('open');
+        faqMoreBtn.classList.toggle('open');
+        faqMoreBtn.setAttribute('aria-expanded', String(!isOpen));
+        faqMoreBtn.querySelector('.faq-more-label').textContent = isOpen ? 'Ver más preguntas' : 'Ver menos';
+        faqMoreBtn.querySelector('.faq-more-arrow').textContent = isOpen ? '↓' : '↑';
+      });
     }
   </script>
 
