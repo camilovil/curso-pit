@@ -254,8 +254,43 @@
 
     </section>
 
-    <!-- === SECCIÓN: VIDEO — agregar cuando el video esté listo === -->
-    <!-- <section class="video-section" id="video">...</section> -->
+    <!-- === SECCIÓN: VIDEO === -->
+    <section class="video-section" id="video">
+      <div class="video-inner">
+
+        <div class="video-meta animate-in">
+          <p class="eyebrow video-eyebrow">Vista previa del curso</p>
+          <h2 class="video-title section-title-hoverable">
+            <span class="hover-underline">El método, explicado por quien lo enseña.</span>
+          </h2>
+        </div>
+
+        <div class="video-player animate-in" style="transition-delay:0.15s" id="videoPlaceholder">
+          <div class="video-bg-blur" aria-hidden="true"></div>
+          <div class="video-thumb" aria-label="Video del Dr. Frusso — próximamente disponible" style="background-image: url('img/DSC_0086.jpg'); background-size: cover; background-position: center 30%;">
+            <div class="video-thumb-content">
+              <div class="video-play-btn" id="videoPlayBtn" role="button" tabindex="0" aria-label="Reproducir video">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                  <path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="#fff"/>
+                </svg>
+              </div>
+              <div class="video-thumb-meta">
+                <p class="video-thumb-label eyebrow" style="color:rgba(255,255,255,0.5); letter-spacing:0.16em">
+                  Video · Próximamente
+                </p>
+                <p class="video-thumb-title">
+                  Introducción al PIT con el Dr. Ricardo D. Frusso
+                </p>
+                <!-- REEMPLAZAR con iframe de YouTube/Vimeo cuando el video esté listo -->
+                <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" ...></iframe> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- === SECCIÓN: PARA QUIÉN ES === -->
     <section class="audience-section mobile-hidden">
