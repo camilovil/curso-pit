@@ -4,11 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Curso PIT online del Dr. Ricardo D. Frusso — único instructor autorizado en América Latina. Módulo I: Lumbalgia y Rodilla. Acceso permanente.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Dr. Ricardo D. Frusso">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://camilovil.github.io/curso-pit/">
   <meta property="og:title" content="Curso PIT — Dr. Ricardo D. Frusso">
   <meta property="og:description" content="Aprendé Perineural Injection Treatment con el referente latinoamericano. Casos clínicos reales. Acceso permanente.">
+  <meta property="og:image" content="https://camilovil.github.io/curso-pit/img/DSC_0086.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Curso PIT · Dr. Frusso">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curso PIT — Dr. Ricardo D. Frusso">
+  <meta name="twitter:description" content="Aprendé Perineural Injection Treatment con el referente latinoamericano. Casos clínicos reales. Acceso permanente.">
+  <meta name="twitter:image" content="https://camilovil.github.io/curso-pit/img/DSC_0086.jpg">
+
   <title>Curso PIT · Dr. Ricardo D. Frusso</title>
   <link rel="canonical" href="https://camilovil.github.io/curso-pit/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%232563EB'/><text y='.9em' font-size='80' font-family='sans-serif' fill='white'>P</text></svg>">
+
+  <!-- Google tag (gtag.js) — reemplazá GOOGLE_ADS_ID y GA4_ID con tus IDs reales -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-GOOGLE_ADS_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-GOOGLE_ADS_ID');
+    gtag('config', 'G-GA4_ID');
+  </script> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -120,7 +148,7 @@
         <p class="hero-price-hint" id="hero-price-hint">Acceso permanente · USD 97.99</p>
 
         <div class="hero-stats" id="hero-stats">
-          <span class="hero-stat">30+ años de experiencia</span>
+          <span class="hero-stat"><span class="counter" data-target="30" data-suffix="+">0</span> años de experiencia</span>
           <span class="hero-stat-sep" aria-hidden="true">|</span>
           <span class="hero-stat">Autorizado por Dr. Lyftogt</span>
           <span class="hero-stat-sep" aria-hidden="true">|</span>
@@ -1380,6 +1408,69 @@
       }, { threshold: 0.2 });
 
       pricingObserver.observe(pricingSection);
+    }
+
+    /* === ANIMACIÓN 1: CONTADOR NUMÉRICO === */
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const startTime = performance.now();
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Lanzar el counter cuando las hero-stats se revelan
+    setTimeout(() => {
+      document.querySelectorAll('.counter').forEach(animateCounter);
+    }, 730 + 200 + 300); // mismo delay que hero-stats + un poco más
+
+    /* === ANIMACIÓN 2: PARALLAX EN FOTO DEL HERO === */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const heroPhoto = document.querySelector('.hero-photo');
+      if (heroPhoto) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrollY = window.scrollY;
+              const heroH = document.getElementById('hero').offsetHeight;
+              if (scrollY <= heroH) {
+                heroPhoto.style.transform = `translateY(${scrollY * 0.18}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    }
+
+    /* === ANIMACIÓN 3: TYPEWRITER EN PRECIO === */
+    const priceEl = document.getElementById('hero-price-hint');
+    if (priceEl) {
+      const fullText = priceEl.textContent;
+      priceEl.textContent = '';
+
+      const startTypewriter = () => {
+        let i = 0;
+        const interval = setInterval(() => {
+          priceEl.textContent = fullText.slice(0, i + 1);
+          i++;
+          if (i >= fullText.length) clearInterval(interval);
+        }, 42);
+      };
+
+      // Arrancar después de que el elemento se revela
+      setTimeout(startTypewriter, 660 + 200 + 80);
     }
   </script>
 
