@@ -2515,7 +2515,6 @@ h4, .h4 {
 }
 
 @media (max-width: 768px) {
-  .guarantee-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
   .guarantee-sep { display: none; }
   .guarantee-item { gap: 16px; }
   .guarantee-icon { width: 44px; height: 44px; border-radius: 10px; }
@@ -2927,8 +2926,10 @@ h4, .h4 {
 
   /* Garantía: solo el toggle, sin tanto padding */
   .guarantee-section { padding: 16px 20px; }
-  .guarantee-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .guarantee-inner { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
   .guarantee-inner .section-toggle { margin-top: 0; }
+  .guarantee-item { padding: 14px 0; border-bottom: 1px solid rgba(37,99,235,0.10); }
+  .guarantee-item:last-child { border-bottom: none; padding-bottom: 4px; }
 
   /* Títulos de sección más compactos */
   .testimonials-title,
