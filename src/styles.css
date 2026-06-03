@@ -3046,3 +3046,112 @@ h4, .h4 {
 .faq-more-btn.open .faq-more-arrow {
   transform: rotate(180deg);
 }
+
+/* ============================================================
+   === ANIMACIONES NUEVAS =====================================
+   ============================================================ */
+
+/* --- Progress bar de lectura --- */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--azul), #60A5FA);
+  z-index: 1100;
+  border-radius: 0 2px 2px 0;
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+/* --- Hero parallax --- */
+.hero-photo { will-change: transform; }
+
+/* --- Pricing pulse al entrar en viewport --- */
+@keyframes pricePulse {
+  0%   { transform: scale(1);    opacity: 1;    }
+  30%  { transform: scale(1.04); opacity: 0.9;  }
+  60%  { transform: scale(1);    opacity: 1;    }
+  80%  { transform: scale(1.02); opacity: 0.95; }
+  100% { transform: scale(1);    opacity: 1;    }
+}
+.pricing-price.pulse-once {
+  animation: pricePulse 1s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+}
+
+/* --- Shimmer en código de descuento al entrar --- */
+@keyframes shimmerSlide {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.pricing-code.shimmer {
+  background: linear-gradient(90deg, var(--azul) 0%, #93C5FD 40%, var(--azul) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerSlide 1.4s linear 2;
+}
+
+/* --- Testimonios: carrusel en mobile --- */
+@media (max-width: 768px) {
+  .testimonials-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 14px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    cursor: grab;
+    user-select: none;
+  }
+  .testimonials-grid.is-dragging { cursor: grabbing; }
+  .testimonials-grid::-webkit-scrollbar { display: none; }
+  .testimonial-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+  /* Dots de navegación */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ink-20);
+    transition: background 0.25s ease, width 0.25s ease, border-radius 0.25s ease;
+    flex-shrink: 0;
+  }
+  .carousel-dot.active {
+    background: var(--azul);
+    width: 18px;
+    border-radius: 3px;
+  }
+}
+@media (min-width: 769px) {
+  .carousel-dots { display: none; }
+}
+
+/* --- Card-lift mejorado para chapter cards --- */
+.chapter-card.card-lift:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.13);
+}
+
+/* --- Audience cards hover --- */
+.audience-card {
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.3s ease;
+}
+.audience-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+}

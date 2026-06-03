@@ -54,6 +54,9 @@
 </head>
 <body>
 
+  <!-- Progress bar de lectura -->
+  <div class="read-progress" id="readProgress"></div>
+
   <!-- Cursor personalizado -->
   <div class="custom-cursor" id="cursor"></div>
 
@@ -615,6 +618,8 @@
           </div>
 
         </div>
+        <!-- Dots carrusel (visibles solo en mobile) -->
+        <div class="carousel-dots" id="carouselDots" aria-hidden="true"></div>
         </div><!-- /collapse-body -->
       </div>
     </section>
@@ -1507,6 +1512,141 @@
         faqMoreBtn.querySelector('.faq-more-arrow').textContent = isOpen ? '↓' : '↑';
       });
     }
+
+    /* === PROGRESS BAR DE LECTURA === */
+    (function () {
+      const bar = document.getElementById('readProgress');
+      if (!bar) return;
+      window.addEventListener('scroll', function () {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? (scrolled / total * 100) + '%' : '0%';
+      }, { passive: true });
+    })();
+
+    /* === CONTADOR ANIMADO (hero stats) === */
+    (function () {
+      const counters = document.querySelectorAll('.counter[data-target]');
+      if (!counters.length) return;
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix || '';
+          const duration = 1200;
+          const start = performance.now();
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function (el) { observer.observe(el); });
+    })();
+
+    /* === HERO PARALLAX === */
+    (function () {
+      const photo = document.querySelector('.hero-photo');
+      if (!photo) return;
+      window.addEventListener('scroll', function () {
+        const y = window.scrollY;
+        // Solo mientras el hero esté visible
+        if (y < window.innerHeight * 1.2) {
+          photo.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+        }
+      }, { passive: true });
+    })();
+
+    /* === PRICING PULSE + SHIMMER al entrar en viewport === */
+    (function () {
+      const price = document.querySelector('.pricing-price');
+      const code  = document.querySelector('.pricing-code');
+      if (!price) return;
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          price.classList.add('pulse-once');
+          if (code) {
+            setTimeout(function () { code.classList.add('shimmer'); }, 400);
+          }
+          obs.disconnect();
+        });
+      }, { threshold: 0.6 });
+      obs.observe(price);
+    })();
+
+    /* === CARRUSEL DE TESTIMONIOS (mobile drag + dots) === */
+    (function () {
+      const grid = document.querySelector('.testimonials-grid');
+      const dotsWrap = document.getElementById('carouselDots');
+      if (!grid || !dotsWrap) return;
+
+      function isMobile() { return window.innerWidth <= 768; }
+
+      // Construir dots
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        if (!isMobile()) return;
+        const cards = grid.querySelectorAll('.testimonial-card');
+        cards.forEach(function (_, i) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Testimonio ' + (i + 1));
+          dot.addEventListener('click', function () {
+            cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          });
+          dotsWrap.appendChild(dot);
+        });
+      }
+
+      // Actualizar dot activo según scroll
+      function updateDots() {
+        if (!isMobile()) return;
+        const dots = dotsWrap.querySelectorAll('.carousel-dot');
+        const cards = grid.querySelectorAll('.testimonial-card');
+        let active = 0;
+        cards.forEach(function (card, i) {
+          const rect = card.getBoundingClientRect();
+          const gridRect = grid.getBoundingClientRect();
+          if (Math.abs(rect.left - gridRect.left) < card.offsetWidth * 0.5) active = i;
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === active); });
+      }
+
+      grid.addEventListener('scroll', updateDots, { passive: true });
+
+      // Drag en el carrusel (mobile)
+      let dragStart = 0, scrollStart = 0, isDragging = false;
+      grid.addEventListener('mousedown', function (e) {
+        if (!isMobile()) return;
+        isDragging = true;
+        dragStart = e.clientX;
+        scrollStart = grid.scrollLeft;
+        grid.classList.add('is-dragging');
+        grid.style.scrollSnapType = 'none';
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        grid.scrollLeft = scrollStart - (e.clientX - dragStart);
+      });
+      document.addEventListener('mouseup', function () {
+        if (!isDragging) return;
+        isDragging = false;
+        grid.classList.remove('is-dragging');
+        grid.style.scrollSnapType = '';
+        updateDots();
+      });
+
+      buildDots();
+      window.addEventListener('resize', buildDots, { passive: true });
+    })();
 
     /* === DRAG TO SCROLL === */
     (function () {
