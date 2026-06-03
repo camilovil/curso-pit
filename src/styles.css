@@ -1734,7 +1734,7 @@ h4, .h4 {
 /* === SECCIÓN: TESTIMONIOS === */
 .testimonials-section {
   background-color: var(--hueso);
-  padding: clamp(32px, 4vw, 52px) clamp(24px, 6vw, 120px);
+  padding: clamp(32px, 4vw, 52px) clamp(24px, 6vw, 120px) clamp(20px, 2.5vw, 32px);
 }
 
 .testimonials-inner {
@@ -2229,7 +2229,7 @@ h4, .h4 {
 /* === SECCIÓN: ANTES / DESPUÉS === */
 .case-section {
   background-color: var(--hueso);
-  padding: clamp(32px, 4vw, 52px) clamp(24px, 6vw, 120px);
+  padding: clamp(20px, 2.5vw, 32px) clamp(24px, 6vw, 120px) clamp(32px, 4vw, 52px);
 }
 
 .case-inner {
