@@ -1298,8 +1298,8 @@ h4, .h4 {
 }
 
 .audience-card {
-  border-radius: 8px;
-  padding: 48px 40px;
+  border-radius: 12px;
+  padding: 44px 40px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -1355,6 +1355,47 @@ h4, .h4 {
   color: rgba(255,255,255,0.5);
   flex-shrink: 0;
   margin-top: 1px;
+}
+
+/* Card header: eyebrow + número */
+.audience-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Número de referencia */
+.audience-card-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Título grande dentro de la card */
+.audience-card-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Separador fino */
+.audience-card-sep {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* Reducir gap interno para que el separador quede justo */
+.audience-card {
+  gap: 20px;
 }
 
 /* === SECCIÓN: CONTENIDO DEL CURSO === */
