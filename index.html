@@ -1514,16 +1514,18 @@
       let startY = 0;
       let scrollY = 0;
       let velocity = 0;
-      let lastY = 0;
-      let lastTime = 0;
       let rafId = null;
-      const FRICTION = 0.92;
-      const MIN_VELOCITY = 0.5;
+      // Historial de los últimos movimientos para calcular velocidad más precisa
+      const trail = [];
+      const FRICTION = 0.94;
+      const MIN_VELOCITY = 0.3;
 
-      // No activar en links, botones, inputs ni elementos interactivos
       function isInteractive(el) {
         return el.closest('a, button, input, textarea, select, label, [role="button"]');
       }
+
+      function disableSmooth() { document.documentElement.style.scrollBehavior = 'auto'; }
+      function enableSmooth()  { document.documentElement.style.scrollBehavior = ''; }
 
       document.addEventListener('mousedown', function (e) {
         if (e.button !== 0) return;
@@ -1532,22 +1534,19 @@
         startY = e.clientY;
         scrollY = window.scrollY;
         velocity = 0;
-        lastY = e.clientY;
-        lastTime = Date.now();
-        if (rafId) cancelAnimationFrame(rafId);
+        trail.length = 0;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        disableSmooth();
         document.body.style.cursor = 'grabbing';
         document.body.style.userSelect = 'none';
       });
 
       document.addEventListener('mousemove', function (e) {
         if (!isDown) return;
-        const now = Date.now();
-        const dt = now - lastTime || 1;
-        velocity = (lastY - e.clientY) / dt * 16; // px por frame aprox
-        lastY = e.clientY;
-        lastTime = now;
-        const diff = startY - e.clientY;
-        window.scrollTo(0, scrollY + diff);
+        const now = performance.now();
+        trail.push({ y: e.clientY, t: now });
+        if (trail.length > 8) trail.shift(); // ventana deslizante
+        window.scrollTo(0, scrollY + (startY - e.clientY));
       });
 
       function endDrag() {
@@ -1555,9 +1554,20 @@
         isDown = false;
         document.body.style.cursor = '';
         document.body.style.userSelect = '';
-        // Inercia suave
+
+        // Calcular velocidad promedio sobre los últimos ~80ms
+        const now = performance.now();
+        const recent = trail.filter(p => now - p.t < 80);
+        if (recent.length >= 2) {
+          const first = recent[0], last = recent[recent.length - 1];
+          const dt = last.t - first.t || 1;
+          velocity = (first.y - last.y) / dt * 16;
+        } else {
+          velocity = 0;
+        }
+
         function glide() {
-          if (Math.abs(velocity) < MIN_VELOCITY) return;
+          if (Math.abs(velocity) < MIN_VELOCITY) { enableSmooth(); return; }
           window.scrollBy(0, velocity);
           velocity *= FRICTION;
           rafId = requestAnimationFrame(glide);
