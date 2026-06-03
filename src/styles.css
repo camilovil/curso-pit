@@ -2474,8 +2474,13 @@ h4, .h4 {
 }
 
 @media (max-width: 768px) {
-  .guarantee-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .guarantee-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
   .guarantee-sep { display: none; }
+  .guarantee-item { gap: 16px; }
+  .guarantee-icon { width: 44px; height: 44px; border-radius: 10px; }
+  .guarantee-icon svg { width: 22px; height: 22px; }
+  .guarantee-label { font-size: 14px; }
+  .guarantee-desc { font-size: 12px; }
 }
 
 /* === STICKY BAR MOBILE === */
@@ -2703,7 +2708,7 @@ h4, .h4 {
   }
 
   .hero {
-    padding: 100px 24px 60px;
+    padding: 96px 24px 48px;
     min-height: 100svh;
   }
 
@@ -2751,7 +2756,7 @@ h4, .h4 {
 
   .pit-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
   }
 
   .audience-grid {
@@ -2783,7 +2788,7 @@ h4, .h4 {
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
   }
 
   .footer-bottom {
@@ -2804,7 +2809,7 @@ h4, .h4 {
   /* === MOBILE: OPTIMIZACIÓN GLOBAL DE SCROLL === */
 
   /* Reducir padding de todas las secciones */
-  :root { --section-padding: 40px 20px; }
+  :root { --section-padding: 36px 20px; }
 
   /* Secciones secundarias — ocultas en mobile */
   .mobile-hidden { display: none !important; }
@@ -2821,6 +2826,7 @@ h4, .h4 {
   .hero-subtitle br { display: none; }
 
   /* PIT: panel técnico compacto */
+  .pit-panel { padding: 24px; }
   .pit-panel-row:nth-child(n+8) { display: none; }
 
   /* Credentials: ocultar tabla en mobile (el botón ya está mobile-hidden) */
