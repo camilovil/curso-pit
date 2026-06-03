@@ -1507,6 +1507,67 @@
         faqMoreBtn.querySelector('.faq-more-arrow').textContent = isOpen ? '↓' : '↑';
       });
     }
+
+    /* === DRAG TO SCROLL === */
+    (function () {
+      let isDown = false;
+      let startY = 0;
+      let scrollY = 0;
+      let velocity = 0;
+      let lastY = 0;
+      let lastTime = 0;
+      let rafId = null;
+      const FRICTION = 0.92;
+      const MIN_VELOCITY = 0.5;
+
+      // No activar en links, botones, inputs ni elementos interactivos
+      function isInteractive(el) {
+        return el.closest('a, button, input, textarea, select, label, [role="button"]');
+      }
+
+      document.addEventListener('mousedown', function (e) {
+        if (e.button !== 0) return;
+        if (isInteractive(e.target)) return;
+        isDown = true;
+        startY = e.clientY;
+        scrollY = window.scrollY;
+        velocity = 0;
+        lastY = e.clientY;
+        lastTime = Date.now();
+        if (rafId) cancelAnimationFrame(rafId);
+        document.body.style.cursor = 'grabbing';
+        document.body.style.userSelect = 'none';
+      });
+
+      document.addEventListener('mousemove', function (e) {
+        if (!isDown) return;
+        const now = Date.now();
+        const dt = now - lastTime || 1;
+        velocity = (lastY - e.clientY) / dt * 16; // px por frame aprox
+        lastY = e.clientY;
+        lastTime = now;
+        const diff = startY - e.clientY;
+        window.scrollTo(0, scrollY + diff);
+      });
+
+      function endDrag() {
+        if (!isDown) return;
+        isDown = false;
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+        // Inercia suave
+        function glide() {
+          if (Math.abs(velocity) < MIN_VELOCITY) return;
+          window.scrollBy(0, velocity);
+          velocity *= FRICTION;
+          rafId = requestAnimationFrame(glide);
+        }
+        glide();
+      }
+
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('mouseleave', endDrag);
+    })();
   </script>
 
 </body>
