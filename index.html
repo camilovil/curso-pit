@@ -995,6 +995,20 @@
   </footer>
 
   <script>
+    /* === EMPEZAR SIEMPRE DESDE ARRIBA === */
+    // El navegador restaura la posición de scroll anterior al recargar/volver,
+    // y con scroll-behavior:smooth se ve como un desplazamiento automático.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    function resetScroll() {
+      if (window.location.hash) return;
+      document.documentElement.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = '';
+    }
+    resetScroll();
+    // Al volver con "atrás" la página puede restaurarse desde caché con el scroll anterior
+    window.addEventListener('pageshow', (e) => { if (e.persisted) resetScroll(); });
+
     /* === SCROLL TOP === */
     const scrollTopBtn = document.getElementById('scrollTop');
 
