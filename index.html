@@ -51,9 +51,23 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- Preload imagen hero — visible inmediatamente -->
-  <link rel="preload" as="image" href="img/DSC_0086.webp" type="image/webp">
+  <link rel="preload" as="image" href="img/DSC_0086.webp" type="image/webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="styles.min.css">
+  <!-- CSS crítico inline — evita flash blanco mientras carga la hoja completa -->
+  <style>
+    *,::after,::before{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{--negro:#0A0A0A;--hueso:#FAFAF7;--azul:#1d58e0}
+    body{background-color:var(--hueso);color:var(--negro);font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:24px;overflow-x:hidden}
+    .navbar{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;z-index:1000;background-color:transparent}
+    .hero{background-color:var(--negro);min-height:100vh;display:flex;align-items:center;padding:120px clamp(24px,6vw,120px) 80px;position:relative;overflow:hidden}
+    .hero-photo{position:absolute;top:0;right:0;width:52%;height:100%;z-index:0}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;filter:grayscale(15%) brightness(.75)}
+  </style>
+
+  <!-- Hoja de estilos completa — cargada de forma asíncrona para no bloquear el render -->
+  <link rel="preload" as="style" href="styles.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -1359,13 +1373,15 @@
     /* === ANIMACIÓN 2: PARALLAX EN FOTO DEL HERO === */
     if (window.matchMedia('(pointer: fine)').matches) {
       const heroPhoto = document.querySelector('.hero-photo');
-      if (heroPhoto) {
+      const heroEl = document.getElementById('hero');
+      if (heroPhoto && heroEl) {
         let ticking = false;
+        let heroH = heroEl.offsetHeight;
+        window.addEventListener('resize', () => { heroH = heroEl.offsetHeight; }, { passive: true });
         window.addEventListener('scroll', () => {
           if (!ticking) {
             requestAnimationFrame(() => {
               const scrollY = window.scrollY;
-              const heroH = document.getElementById('hero').offsetHeight;
               if (scrollY <= heroH) {
                 heroPhoto.style.transform = `translateY(${scrollY * 0.18}px)`;
               }
