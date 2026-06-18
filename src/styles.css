@@ -1074,6 +1074,109 @@ h4, .h4 {
   text-transform: uppercase;
 }
 
+/* === SECCIÓN: RECURSO GRATUITO === */
+.freebie-section {
+  background-color: var(--hueso);
+  padding: var(--section-padding);
+  padding-top: clamp(32px, 4vw, 56px);
+  padding-bottom: clamp(32px, 4vw, 56px);
+  border-top: 1px solid var(--ink-10);
+}
+
+.freebie-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.freebie-eyebrow {
+  color: var(--azul);
+  margin-bottom: 16px;
+}
+
+.freebie-title {
+  margin-bottom: 16px;
+}
+
+.freebie-subtitle {
+  color: var(--ink-60);
+  font-size: 16px;
+  line-height: 25px;
+  max-width: 56ch;
+}
+
+.freebie-card {
+  background-color: var(--negro);
+  border-radius: 12px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.freebie-card-icon {
+  width: 44px;
+  height: 44px;
+  background-color: var(--azul);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.freebie-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.freebie-card-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.freebie-card-desc {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.freebie-card-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.freebie-card-sep {
+  color: var(--azul);
+}
+
+.freebie-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .freebie-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
 /* === SECCIÓN: VIDEO === */
 .video-section {
   background-color: var(--negro);
