@@ -1115,9 +1115,46 @@ h4, .h4 {
   font-weight: 600;
 }
 
+.freebie-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.freebie-toggle {
+  margin-top: 0;
+  padding: 8px 14px;
+  border-width: 1.5px;
+}
+
 .freebie-btn {
   flex-shrink: 0;
   white-space: nowrap;
+}
+
+.freebie-extra {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.freebie-extra-text {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--ink-60);
+  padding-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .freebie-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .freebie-toggle {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {

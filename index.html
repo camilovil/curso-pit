@@ -287,9 +287,24 @@
             <strong>Apuntes de PIT</strong> — anatomía, técnica y puntos de inyección. 503 páginas, sin costo.
           </p>
         </div>
-        <a href="docs/Apuntes-PIT-Neuroproloterapia-Dr-Frusso.pdf" download class="btn btn-primary btn-sm freebie-btn">
-          Descargar PDF →
-        </a>
+        <div class="freebie-actions">
+          <button class="section-toggle freebie-toggle" id="freebieToggle" aria-expanded="false">
+            <span class="section-toggle-label">Ver más</span>
+            <span class="section-toggle-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <a href="docs/Apuntes-PIT-Neuroproloterapia-Dr-Frusso.pdf" download class="btn btn-primary btn-sm freebie-btn">
+            Descargar PDF →
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse-body freebie-extra" id="freebieBody">
+        <p class="freebie-extra-text">
+          Lumbalgia · Miembro superior e inferior · Dolor cervical · Cefaleas y más.
+          Elaborado por el Dr. Ricardo D. Frusso junto al Dr. Pigerl Heno · PDF · 49 MB.
+        </p>
       </div>
     </section>
 
@@ -1435,6 +1450,7 @@
     initSectionToggle('testimonialsToggle', 'testimonialsBody', 'Ver testimonios', 'Ocultar testimonios');
     initSectionToggle('casoToggle',         'casoBody',         'Ver caso clínico', 'Ocultar caso clínico');
     initSectionToggle('garantiaToggle',     'garantiaBody',     'Ver qué incluye el acceso', 'Ocultar');
+    initSectionToggle('freebieToggle',      'freebieBody',      'Ver más', 'Ver menos');
 
     /* === CREDENCIALES TOGGLE === */
     const credentialsToggle = document.getElementById('credentialsToggle');
