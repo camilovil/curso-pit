@@ -919,6 +919,7 @@ h4, .h4 {
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: clamp(24px, 6vw, 120px);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
@@ -985,6 +986,7 @@ h4, .h4 {
     margin-top: 40px;
     padding: 0 24px 4px;
     gap: 12px;
+    scroll-padding-left: 24px;
   }
   .pit-photo-item {
     flex: 0 0 78%;
@@ -992,6 +994,19 @@ h4, .h4 {
   .pit-photo-item .pit-photo-caption {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Desktop: grilla de exactamente 3 fotos por página, sin que asome la 4ta.
+   Solo el primer ítem de cada grupo de 3 es punto de snap (page-start),
+   así el carrusel avanza de a páginas completas. */
+@media (min-width: 769px) {
+  .pit-photo-item {
+    flex: 0 0 calc((100% - 32px) / 3);
+    scroll-snap-align: none;
+  }
+  .pit-photo-item.page-start {
+    scroll-snap-align: start;
   }
 }
 
