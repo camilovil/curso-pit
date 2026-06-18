@@ -1638,7 +1638,6 @@
 
       function buildDots() {
         dotsWrap.innerHTML = '';
-        if (window.innerWidth > 768) return;
         const items = strip.querySelectorAll('.pit-photo-item');
         items.forEach(function (_, i) {
           const dot = document.createElement('button');
@@ -1652,7 +1651,6 @@
       }
 
       function updateDots() {
-        if (window.innerWidth > 768) return;
         const dots = dotsWrap.querySelectorAll('.carousel-dot');
         const items = strip.querySelectorAll('.pit-photo-item');
         let active = 0;

@@ -3238,30 +3238,42 @@ h4, .h4 {
     flex: 0 0 85%;
     scroll-snap-align: start;
   }
-  /* Dots de navegación */
-  .carousel-dots {
+  /* Dots del carrusel de testimonios: solo mobile (en desktop es grilla fija) */
+  #carouselDots {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
     margin-top: 16px;
   }
-  .carousel-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--ink-20);
-    transition: background 0.25s ease, width 0.25s ease, border-radius 0.25s ease;
-    flex-shrink: 0;
-  }
-  .carousel-dot.active {
-    background: var(--azul);
-    width: 18px;
-    border-radius: 3px;
-  }
 }
 @media (min-width: 769px) {
-  .carousel-dots { display: none; }
+  #carouselDots { display: none; }
+}
+
+/* Dots de navegación — genérico, visible en todos los tamaños (carrusel de fotos PIT) */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-20);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s ease, width 0.25s ease, border-radius 0.25s ease;
+  flex-shrink: 0;
+}
+.carousel-dot.active {
+  background: var(--azul);
+  width: 18px;
+  border-radius: 3px;
 }
 
 /* --- Card-lift mejorado para chapter cards --- */
