@@ -952,6 +952,9 @@ h4, .h4 {
   display: block;
   filter: grayscale(20%) brightness(0.88);
   transition: filter 0.4s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .pit-photo-item:hover img {

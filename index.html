@@ -1720,24 +1720,61 @@
 
       strip.addEventListener('scroll', updateDots, { passive: true });
 
+      // Evita que el navegador inicie su drag nativo de imagen al arrastrar
+      // sobre un <img> — eso es lo que generaba el "engancharse" al deslizar.
+      strip.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
       let dragStart = 0, scrollStart = 0, isDragging = false;
+      let velocity = 0, rafId = null;
+      const trail = [];
+      const FRICTION = 0.95;
+      const MIN_VELOCITY = 0.3;
+
       strip.addEventListener('mousedown', function (e) {
+        e.preventDefault();
         isDragging = true;
         dragStart = e.clientX;
         scrollStart = strip.scrollLeft;
+        trail.length = 0;
+        velocity = 0;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         strip.classList.add('is-dragging');
         strip.style.scrollSnapType = 'none';
       });
       document.addEventListener('mousemove', function (e) {
         if (!isDragging) return;
+        const now = performance.now();
+        trail.push({ x: e.clientX, t: now });
+        if (trail.length > 8) trail.shift();
         strip.scrollLeft = scrollStart - (e.clientX - dragStart);
       });
       document.addEventListener('mouseup', function () {
         if (!isDragging) return;
         isDragging = false;
         strip.classList.remove('is-dragging');
-        strip.style.scrollSnapType = '';
-        updateDots();
+
+        // Velocidad promedio de los últimos ~80ms para una inercia suave
+        const now = performance.now();
+        const recent = trail.filter(function (p) { return now - p.t < 80; });
+        if (recent.length >= 2) {
+          const first = recent[0], last = recent[recent.length - 1];
+          const dt = last.t - first.t || 1;
+          velocity = -(last.x - first.x) / dt * 16;
+        } else {
+          velocity = 0;
+        }
+
+        function glide() {
+          if (Math.abs(velocity) < MIN_VELOCITY) {
+            strip.style.scrollSnapType = '';
+            updateDots();
+            return;
+          }
+          strip.scrollLeft += velocity;
+          velocity *= FRICTION;
+          rafId = requestAnimationFrame(glide);
+        }
+        glide();
       });
 
       buildDots();
