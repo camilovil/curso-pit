@@ -251,11 +251,19 @@
 
       </div>
 
-      <!-- Strip de fotos clínicas -->
-      <div class="pit-photo-strip mobile-hidden">
+      <!-- Carrusel de fotos clínicas -->
+      <div class="pit-photo-strip" id="pitPhotoStrip">
         <div class="pit-photo-item">
           <img src="img/DSC_knee01.jpg" alt="Aplicación de técnica PIT en rodilla, marcando puntos de inyección" loading="lazy"/>
           <p class="pit-photo-caption">Técnica aplicada en rodilla</p>
+        </div>
+        <div class="pit-photo-item">
+          <img src="img/DSC_lumbar01.jpg" alt="Aplicación de técnica PIT en zona lumbar" loading="lazy"/>
+          <p class="pit-photo-caption">Aplicación en zona lumbar</p>
+        </div>
+        <div class="pit-photo-item">
+          <img src="img/DSC_thigh01.jpg" alt="Mapa de ramas nerviosas marcado en muslo para tratamiento PIT" loading="lazy"/>
+          <p class="pit-photo-caption">Mapa de ramas nerviosas</p>
         </div>
         <div class="pit-photo-item">
           <picture>
@@ -265,6 +273,14 @@
           <p class="pit-photo-caption">Punto de inyección cervical</p>
         </div>
         <div class="pit-photo-item">
+          <img src="img/DSC_shoulder01.jpg" alt="Marcado de puntos de inyección en hombro" loading="lazy"/>
+          <p class="pit-photo-caption">Puntos marcados en hombro</p>
+        </div>
+        <div class="pit-photo-item">
+          <img src="img/DSC_syringe02.jpg" alt="Preparación de la inyección de glucosa al 5%" loading="lazy"/>
+          <p class="pit-photo-caption">Preparación de la inyección</p>
+        </div>
+        <div class="pit-photo-item">
           <picture>
             <source srcset="img/DSC_0098.webp" type="image/webp">
             <img src="img/DSC_0098.jpg" alt="Mapa anatómico de nervios periféricos utilizado como referencia en el curso PIT" loading="lazy"/>
@@ -272,6 +288,9 @@
           <p class="pit-photo-caption">Mapa anatómico de referencia</p>
         </div>
       </div>
+
+      <!-- Dots carrusel (visibles solo en mobile) -->
+      <div class="carousel-dots" id="pitCarouselDots" aria-hidden="true"></div>
 
     </section>
 
@@ -1603,6 +1622,66 @@
       window.addEventListener('resize', buildDots, { passive: true });
     })();
 
+    /* === CARRUSEL DE FOTOS PIT (drag + dots, todos los tamaños) === */
+    (function () {
+      const strip = document.getElementById('pitPhotoStrip');
+      const dotsWrap = document.getElementById('pitCarouselDots');
+      if (!strip || !dotsWrap) return;
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        if (window.innerWidth > 768) return;
+        const items = strip.querySelectorAll('.pit-photo-item');
+        items.forEach(function (_, i) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+          dot.addEventListener('click', function () {
+            items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          });
+          dotsWrap.appendChild(dot);
+        });
+      }
+
+      function updateDots() {
+        if (window.innerWidth > 768) return;
+        const dots = dotsWrap.querySelectorAll('.carousel-dot');
+        const items = strip.querySelectorAll('.pit-photo-item');
+        let active = 0;
+        items.forEach(function (item, i) {
+          const rect = item.getBoundingClientRect();
+          const stripRect = strip.getBoundingClientRect();
+          if (Math.abs(rect.left - stripRect.left) < item.offsetWidth * 0.5) active = i;
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === active); });
+      }
+
+      strip.addEventListener('scroll', updateDots, { passive: true });
+
+      let dragStart = 0, scrollStart = 0, isDragging = false;
+      strip.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        dragStart = e.clientX;
+        scrollStart = strip.scrollLeft;
+        strip.classList.add('is-dragging');
+        strip.style.scrollSnapType = 'none';
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        strip.scrollLeft = scrollStart - (e.clientX - dragStart);
+      });
+      document.addEventListener('mouseup', function () {
+        if (!isDragging) return;
+        isDragging = false;
+        strip.classList.remove('is-dragging');
+        strip.style.scrollSnapType = '';
+        updateDots();
+      });
+
+      buildDots();
+      window.addEventListener('resize', buildDots, { passive: true });
+    })();
+
     /* === DRAG TO SCROLL === */
     (function () {
       let isDown = false;
@@ -1616,7 +1695,7 @@
       const MIN_VELOCITY = 0.3;
 
       function isInteractive(el) {
-        return el.closest('a, button, input, textarea, select, label, [role="button"]');
+        return el.closest('a, button, input, textarea, select, label, [role="button"], .pit-photo-strip, .testimonials-grid');
       }
 
       function disableSmooth() { document.documentElement.style.scrollBehavior = 'auto'; }
