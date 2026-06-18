@@ -1076,112 +1076,59 @@ h4, .h4 {
 
 /* === SECCIÓN: RECURSO GRATUITO === */
 .freebie-section {
-  background-color: var(--hueso);
-  padding: var(--section-padding);
-  padding-top: clamp(32px, 4vw, 56px);
-  padding-bottom: clamp(32px, 4vw, 56px);
-  border-top: 1px solid var(--ink-10);
+  background-color: var(--azul-tint);
+  padding: 18px clamp(24px, 6vw, 120px);
+  border-top: 1px solid rgba(37, 99, 235, 0.12);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.12);
 }
 
 .freebie-inner {
   max-width: var(--content-max);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 56px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.freebie-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .freebie-eyebrow {
   color: var(--azul);
-  margin-bottom: 16px;
+  white-space: nowrap;
 }
 
-.freebie-title {
-  margin-bottom: 16px;
-}
-
-.freebie-subtitle {
-  color: var(--ink-60);
-  font-size: 16px;
-  line-height: 25px;
-  max-width: 56ch;
-}
-
-.freebie-credit {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--ink-40);
-  margin-top: 16px;
-}
-
-.freebie-card {
-  background-color: var(--negro);
-  border-radius: 12px;
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.freebie-card-icon {
-  width: 44px;
-  height: 44px;
-  background-color: var(--azul);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-.freebie-card-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.freebie-card-title {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 20px;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-
-.freebie-card-desc {
+.freebie-line {
   font-size: 14px;
-  line-height: 20px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--ink-60);
+  margin: 0;
 }
 
-.freebie-card-meta {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-40);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.freebie-card-sep {
-  color: var(--azul);
+.freebie-line strong {
+  color: var(--negro);
+  font-weight: 600;
 }
 
 .freebie-btn {
-  width: 100%;
-  justify-content: center;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
   .freebie-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .freebie-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
