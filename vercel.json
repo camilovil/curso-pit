@@ -1,6 +1,7 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
