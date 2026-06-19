@@ -60,6 +60,118 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- === POPUP NEWSLETTER: estilos === -->
+  <style id="frusso-newsletter-styles">
+    /* Overlay */
+    #fnl-overlay {
+      position: fixed; inset: 0;
+      background: rgba(10,10,10,0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 320ms ease;
+      pointer-events: none;
+    }
+    #fnl-overlay.fnl-visible { opacity: 1; pointer-events: all; }
+
+    /* Modal */
+    .fnl-modal {
+      background: #FAFAF7;
+      width: 100%; max-width: 560px;
+      position: relative;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 340ms cubic-bezier(0.22,1,0.36,1), opacity 340ms ease;
+      opacity: 0;
+    }
+    #fnl-overlay.fnl-visible .fnl-modal { transform: translateY(0) scale(1); opacity: 1; }
+
+    /* Accent bars */
+    .fnl-modal::before { content: ""; display: block; height: 5px; background: #0A0A0A; }
+    .fnl-modal::after  { content: ""; position: absolute; top: 0; left: 0; width: 28%; height: 5px; background: #004EFB; }
+
+    /* Close */
+    .fnl-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: 1px solid #E5E5E5;
+      cursor: pointer; transition: all 160ms;
+      color: #737373; font-size: 16px; line-height: 1; z-index: 1;
+    }
+    .fnl-close:hover { background: #0A0A0A; color: #FAFAF7; border-color: #0A0A0A; }
+
+    /* Body */
+    .fnl-body { padding: 44px 48px 48px; }
+
+    /* Logo */
+    .fnl-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 36px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #404040; }
+    .fnl-logo-mark { width: 30px; height: 30px; background: #0A0A0A; display: flex; align-items: center; justify-content: center; gap: 4px; flex: 0 0 auto; padding: 0 6px; }
+    .fnl-logo-mark .fnl-bar { width: 3px; height: 14px; background: #004EFB; flex: 0 0 auto; }
+    .fnl-logo-mark .fnl-f   { color: #fff; font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 700; font-size: 13px; line-height: 1; }
+
+    /* Eyebrow */
+    .fnl-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #004EFB; font-weight: 500; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .fnl-eyebrow::before { content: ""; width: 20px; height: 2px; background: #004EFB; }
+
+    /* Headline */
+    .fnl-headline { font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 700; font-size: clamp(52px, 12vw, 80px); line-height: 0.88; letter-spacing: -0.04em; color: #0A0A0A; margin: 0 0 4px; }
+    .fnl-headline .fnl-pipe { display: inline-block; width: 10px; height: 0.88em; background: #004EFB; margin: 0 10px 0 4px; vertical-align: middle; position: relative; top: -4px; }
+
+    /* Subtitle */
+    .fnl-subtitle { font-size: 15px; line-height: 1.45; color: #404040; margin: 16px 0 32px; text-wrap: pretty; max-width: 42ch; }
+    .fnl-subtitle strong { color: #0A0A0A; font-weight: 600; }
+
+    /* Form */
+    .fnl-form { display: flex; flex-direction: column; gap: 12px; }
+    .fnl-input-row { display: flex; gap: 0; }
+    .fnl-input { flex: 1; padding: 14px 18px; font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 15px; color: #0A0A0A; background: #FAFAF7; border: 1px solid #BFBFBF; border-right: none; outline: none; transition: border-color 160ms; appearance: none; -webkit-appearance: none; }
+    .fnl-input::placeholder { color: #737373; }
+    .fnl-input:focus { border-color: #0A0A0A; }
+    .fnl-submit { display: inline-flex; align-items: center; gap: 10px; background: #0A0A0A; color: #FAFAF7; padding: 14px 22px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; border: 1px solid #0A0A0A; cursor: pointer; white-space: nowrap; transition: background 160ms, border-color 160ms; flex: 0 0 auto; }
+    .fnl-submit:hover { background: #004EFB; border-color: #004EFB; }
+    .fnl-submit .fnl-arr { transition: transform 200ms; }
+    .fnl-submit:hover .fnl-arr { transform: translateX(4px); }
+
+    /* Fine print */
+    .fnl-fine { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #737373; line-height: 1.5; }
+    .fnl-fine a { color: #404040; text-decoration: underline; }
+    .fnl-error { color: #c0392b !important; display: none; }
+
+    /* Success */
+    .fnl-success { display: none; flex-direction: column; align-items: flex-start; gap: 16px; padding: 44px 48px 48px; }
+    .fnl-success-icon { width: 48px; height: 48px; background: #004EFB; color: #fff; display: grid; place-items: center; font-size: 22px; }
+    .fnl-success-title { font-size: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #0A0A0A; font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; }
+    .fnl-code-wrap { display: flex; align-items: center; width: 100%; }
+    .fnl-code { flex: 1; padding: 14px 18px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 18px; letter-spacing: 0.12em; font-weight: 600; color: #004EFB; background: #F4F4F4; border: 1px solid #E5E5E5; border-right: none; }
+    .fnl-copy { padding: 14px 18px; background: #0A0A0A; color: #FAFAF7; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid #0A0A0A; cursor: pointer; transition: background 160ms; white-space: nowrap; }
+    .fnl-copy:hover { background: #004EFB; border-color: #004EFB; }
+    .fnl-success-note { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #737373; line-height: 1.6; }
+    .fnl-success-close { display: inline-flex; align-items: center; gap: 10px; background: none; border: 1px solid #BFBFBF; padding: 12px 18px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #404040; cursor: pointer; transition: all 160ms; margin-top: 4px; }
+    .fnl-success-close:hover { background: #0A0A0A; color: #FAFAF7; border-color: #0A0A0A; }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      #fnl-overlay { align-items: flex-end; padding: 0; }
+      .fnl-modal { max-width: 100%; width: 100%; transform: translateY(48px); }
+      #fnl-overlay.fnl-visible .fnl-modal { transform: translateY(0); }
+      .fnl-body { padding: 32px 24px 36px; }
+      .fnl-success { padding: 32px 24px 36px; }
+      .fnl-logo { margin-bottom: 24px; }
+      .fnl-headline { font-size: clamp(48px, 16vw, 68px); }
+      .fnl-subtitle { font-size: 14px; margin: 12px 0 24px; max-width: 100%; }
+      .fnl-input-row { flex-direction: column; }
+      .fnl-input { border-right: 1px solid #BFBFBF; border-bottom: none; font-size: 16px; }
+      .fnl-submit { width: 100%; justify-content: center; padding: 16px 22px; }
+      .fnl-success-title { font-size: 22px; }
+      .fnl-code { font-size: 16px; }
+      .fnl-success-close { width: 100%; justify-content: center; }
+      .fnl-close { width: 40px; height: 40px; top: 16px; right: 16px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -1851,6 +1963,119 @@
       document.addEventListener('mouseup', endDrag);
       document.addEventListener('mouseleave', endDrag);
     })();
+  </script>
+
+  <!-- === POPUP NEWSLETTER: HTML === -->
+  <div id="fnl-overlay" role="dialog" aria-modal="true" aria-label="Suscripción newsletter">
+    <div class="fnl-modal">
+
+      <button class="fnl-close" id="fnl-close-btn" aria-label="Cerrar">✕</button>
+
+      <!-- Formulario -->
+      <div class="fnl-body" id="fnl-form-panel">
+        <div class="fnl-logo">
+          <div class="fnl-logo-mark"><span class="fnl-bar"></span><span class="fnl-f">F</span></div>
+          <span>Dr. Ricardo D. Frusso</span>
+        </div>
+        <p class="fnl-eyebrow">Newsletter</p>
+        <div class="fnl-headline">20<span class="fnl-pipe"></span>% OFF</div>
+        <p class="fnl-subtitle">
+          Suscribite al newsletter y recibí un <strong>cupón de 20% de descuento</strong> en el próximo curso PIT — más contenido clínico exclusivo sobre Neuroproloterapia y medicina regenerativa.
+        </p>
+        <form class="fnl-form" id="fnl-form" novalidate>
+          <div class="fnl-input-row">
+            <input class="fnl-input" id="fnl-email" type="email" placeholder="tu@email.com" autocomplete="email" required aria-label="Correo electrónico" />
+            <button class="fnl-submit" type="submit">Registrarme <span class="fnl-arr">→</span></button>
+          </div>
+          <p class="fnl-fine fnl-error" id="fnl-error">Ingresá un email válido para continuar.</p>
+          <p class="fnl-fine">Sin spam. Podés darte de baja en cualquier momento.<br>
+            Consultá nuestra <a href="/privacidad">política de privacidad</a>.
+          </p>
+        </form>
+      </div>
+
+      <!-- Éxito -->
+      <div class="fnl-success" id="fnl-success-panel">
+        <button class="fnl-close" onclick="fnlClose()" style="top:20px;right:20px;" aria-label="Cerrar">✕</button>
+        <div class="fnl-success-icon">✓</div>
+        <div class="fnl-success-title">¡Listo! Revisá tu casilla.</div>
+        <p class="fnl-success-note">Tu cupón de descuento llega en minutos.<br>Guardalo para usarlo en tu próxima inscripción.</p>
+        <div class="fnl-code-wrap">
+          <div class="fnl-code">FRUSSO20</div>
+          <button class="fnl-copy" id="fnl-copy-btn">Copiar</button>
+        </div>
+        <button class="fnl-success-close" onclick="fnlClose()">Ir al sitio →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var STORAGE_KEY = 'frusso_nl_dismissed';
+    var DELAY_MS    = 2800;
+    var SNOOZE_DAYS = 14;
+
+    var overlay     = document.getElementById('fnl-overlay');
+    var closeBtn    = document.getElementById('fnl-close-btn');
+    var form        = document.getElementById('fnl-form');
+    var emailInput  = document.getElementById('fnl-email');
+    var errMsg      = document.getElementById('fnl-error');
+    var formPanel   = document.getElementById('fnl-form-panel');
+    var successPanel= document.getElementById('fnl-success-panel');
+
+    window.fnlClose = function() {
+      overlay.classList.remove('fnl-visible');
+      document.body.style.overflow = '';
+      var until = Date.now() + SNOOZE_DAYS * 864e5;
+      localStorage.setItem(STORAGE_KEY, String(until));
+    };
+
+    function fnlOpen() {
+      overlay.classList.add('fnl-visible');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() { emailInput && emailInput.focus(); }, 350);
+    }
+
+    function maybeShow() {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && Date.now() < Number(stored)) return;
+      setTimeout(fnlOpen, DELAY_MS);
+    }
+
+    closeBtn.addEventListener('click', window.fnlClose);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) window.fnlClose(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') window.fnlClose(); });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = emailInput.value.trim();
+      var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!valid) { errMsg.style.display = 'block'; emailInput.focus(); return; }
+      errMsg.style.display = 'none';
+
+      // Mismo Formspree que el formulario del sitio
+      fetch('https://formspree.io/f/xykvrdad', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: email, _subject: 'Newsletter popup — Cupón FRUSSO20' })
+      });
+
+      localStorage.setItem(STORAGE_KEY, String(Date.now() + 365 * 864e5));
+      formPanel.style.display   = 'none';
+      successPanel.style.display = 'flex';
+    });
+
+    document.getElementById('fnl-copy-btn').addEventListener('click', function() {
+      var btn = this;
+      navigator.clipboard.writeText('FRUSSO20').then(function() {
+        btn.textContent = '✓ Copiado';
+        setTimeout(function() { btn.textContent = 'Copiar'; }, 2000);
+      });
+    });
+
+    maybeShow();
+  })();
   </script>
 
 </body>

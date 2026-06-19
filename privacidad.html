@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Política de Privacidad — Dr. Ricardo D. Frusso</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Política de privacidad y tratamiento de datos personales del sitio drricardofrusso.com, conforme a la Ley 25.326 de Argentina." />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://drricardofrusso.com/privacidad" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="/icons/favicon-192.png" type="image/png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<style>
+  :root {
+    --ink:    #0A0A0A;
+    --ink-60: #404040;
+    --ink-40: #737373;
+    --ink-20: #BFBFBF;
+    --ink-10: #E5E5E5;
+    --ink-05: #F4F4F4;
+    --paper:  #FAFAF7;
+    --blue:   #004EFB;
+    --sans:   'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --mono:   'JetBrains Mono', ui-monospace, monospace;
+    --max-w:  720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ── Topbar ── */
+  .pp-topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+    gap: 20px;
+  }
+  .pp-topbar-logo {
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .pp-topbar-mark {
+    width: 26px; height: 26px;
+    background: var(--ink);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    gap: 3px; flex: 0 0 auto;
+  }
+  .pp-topbar-mark .lm-bar { width: 2px; height: 12px; background: var(--blue); flex: 0 0 auto; }
+  .pp-topbar-mark .lm-f  { color: #fff; font-family: var(--sans); font-weight: 700; font-size: 11px; line-height: 1; }
+  .pp-topbar-name {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .pp-topbar-back {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: color 160ms;
+  }
+  .pp-topbar-back:hover { color: #fff; }
+
+  /* Accent line */
+  .pp-accent { height: 4px; background: var(--ink-10); position: relative; }
+  .pp-accent::after { content: ""; position: absolute; left: 0; top: 0; width: 120px; height: 4px; background: var(--blue); }
+
+  /* Hero */
+  .pp-hero {
+    padding: 72px 40px 56px;
+    max-width: calc(var(--max-w) + 80px);
+    margin: 0 auto;
+    border-bottom: 1px solid var(--ink-10);
+  }
+  .pp-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .pp-eyebrow::before { content: ""; width: 20px; height: 2px; background: var(--blue); }
+  .pp-hero h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .pp-meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-40);
+  }
+  .pp-meta span { display: flex; align-items: center; gap: 6px; }
+  .pp-meta span::before { content: ""; width: 4px; height: 4px; background: var(--ink-20); border-radius: 50%; }
+
+  /* Layout */
+  .pp-content {
+    max-width: calc(var(--max-w) + 80px);
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 60px;
+    align-items: start;
+  }
+
+  /* TOC */
+  .pp-toc { position: sticky; top: 72px; padding-top: 56px; }
+  .pp-toc-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-40); margin-bottom: 16px;
+  }
+  .pp-toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .pp-toc-list a {
+    display: block;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-40); text-decoration: none;
+    padding: 6px 0 6px 12px;
+    border-left: 2px solid transparent;
+    transition: all 140ms; line-height: 1.4;
+  }
+  .pp-toc-list a:hover { color: var(--ink); border-left-color: var(--ink-20); }
+  .pp-toc-list a.active { color: var(--blue); border-left-color: var(--blue); }
+
+  /* Document */
+  .pp-doc { padding-top: 56px; }
+  .pp-section { padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--ink-10); }
+  .pp-section:last-child { border-bottom: none; }
+  .pp-section h2 {
+    font-size: 18px; font-weight: 700;
+    letter-spacing: -0.015em; color: var(--ink);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+    scroll-margin-top: 72px;
+  }
+  .pp-section h2 .num {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.14em; color: var(--blue);
+    background: rgba(0,78,251,0.07);
+    padding: 3px 8px; flex: 0 0 auto;
+  }
+  .pp-section p {
+    font-size: 15px; line-height: 1.75;
+    color: var(--ink-60); margin-bottom: 16px;
+    text-wrap: pretty;
+  }
+  .pp-section p:last-child { margin-bottom: 0; }
+  .pp-section p strong { color: var(--ink); font-weight: 600; }
+  .pp-section a { color: var(--blue); text-decoration: underline; }
+  .pp-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .pp-section li { font-size: 15px; line-height: 1.65; color: var(--ink-60); display: flex; gap: 12px; align-items: flex-start; }
+  .pp-section li::before { content: "—"; color: var(--blue); font-weight: 600; flex: 0 0 auto; }
+
+  .pp-callout {
+    background: var(--ink-05);
+    border-left: 3px solid var(--blue);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 14px; line-height: 1.65;
+    color: var(--ink-60);
+  }
+  .pp-callout strong { color: var(--ink); }
+
+  .pp-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 10px; margin: 2px 4px 2px 0;
+  }
+
+  /* Footer */
+  .pp-footer {
+    background: var(--ink); color: rgba(255,255,255,0.4);
+    padding: 40px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .pp-footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  .pp-footer a:hover { color: #fff; }
+
+  @media (max-width: 800px) {
+    .pp-content { grid-template-columns: 1fr; }
+    .pp-toc { display: none; }
+    .pp-hero, .pp-content { padding-left: 24px; padding-right: 24px; }
+    .pp-hero { padding-top: 48px; padding-bottom: 40px; }
+    .pp-topbar { padding: 0 24px; }
+    .pp-footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="pp-topbar">
+  <a class="pp-topbar-logo" href="/">
+    <div class="pp-topbar-mark">
+      <span class="lm-bar"></span>
+      <span class="lm-f">F</span>
+    </div>
+    <span class="pp-topbar-name">Dr. Ricardo D. Frusso</span>
+  </a>
+  <a class="pp-topbar-back" href="/">← Volver al sitio</a>
+</header>
+<div class="pp-accent"></div>
+
+<div class="pp-hero">
+  <p class="pp-eyebrow">Legal</p>
+  <h1>Política de<br>Privacidad</h1>
+  <div class="pp-meta">
+    <span>Última actualización: junio 2026</span>
+    <span>Ley 25.326 — Argentina</span>
+    <span>drricardofrusso.com</span>
+  </div>
+</div>
+
+<div class="pp-content">
+
+  <nav class="pp-toc" aria-label="Índice">
+    <p class="pp-toc-label">Contenido</p>
+    <ol class="pp-toc-list">
+      <li><a href="#responsable">01 Responsable</a></li>
+      <li><a href="#datos">02 Datos que recopilamos</a></li>
+      <li><a href="#finalidad">03 Finalidad del uso</a></li>
+      <li><a href="#newsletter">04 Newsletter</a></li>
+      <li><a href="#terceros">05 Terceros</a></li>
+      <li><a href="#cookies">06 Cookies</a></li>
+      <li><a href="#derechos">07 Tus derechos</a></li>
+      <li><a href="#seguridad">08 Seguridad</a></li>
+      <li><a href="#cambios">09 Cambios</a></li>
+      <li><a href="#contacto">10 Contacto</a></li>
+    </ol>
+  </nav>
+
+  <main class="pp-doc">
+
+    <div class="pp-callout">
+      <strong>Resumen simple:</strong> Recopilamos tu email cuando te suscribís al newsletter, y datos agregados y anónimos de navegación a través de Vercel Web Analytics. No vendemos ni compartimos tus datos con terceros con fines comerciales. Podés darte de baja o solicitar la eliminación de tus datos en cualquier momento.
+    </div>
+
+    <section class="pp-section" id="responsable">
+      <h2><span class="num">01</span> Responsable del tratamiento</h2>
+      <p>El responsable del tratamiento de los datos personales recopilados a través de <strong>drricardofrusso.com</strong> es:</p>
+      <p><strong>Dr. Ricardo D. Frusso</strong><br>Especialista en Neuroproloterapia y medicina regenerativa<br>Correo electrónico: <a href="mailto:ricardodfrusso@gmail.com">ricardodfrusso@gmail.com</a></p>
+      <p>El tratamiento de datos se rige por la <strong>Ley 25.326 de Protección de los Datos Personales</strong> de la República Argentina y sus normas complementarias.</p>
+    </section>
+
+    <section class="pp-section" id="datos">
+      <h2><span class="num">02</span> Datos que recopilamos</h2>
+      <p>Recopilamos únicamente los datos necesarios para los fines descriptos en esta política:</p>
+      <ul>
+        <li><strong>Dirección de email:</strong> cuando te suscribís voluntariamente al newsletter a través del formulario del sitio.</li>
+        <li><strong>Datos de navegación agregados:</strong> páginas visitadas y rendimiento del sitio, recopilados de forma anónima a través de Vercel Web Analytics, sin uso de cookies de seguimiento.</li>
+      </ul>
+      <p>No recopilamos datos sensibles (salud, ideología, religión, etc.) a través de este sitio.</p>
+    </section>
+
+    <section class="pp-section" id="finalidad">
+      <h2><span class="num">03</span> Finalidad del uso</h2>
+      <p>Los datos recopilados se utilizan exclusivamente para:</p>
+      <ul>
+        <li>Enviar el newsletter con contenido educativo sobre Neuroproloterapia, medicina regenerativa y cursos PIT.</li>
+        <li>Enviar el cupón de descuento prometido al momento de la suscripción.</li>
+        <li>Analizar el tráfico del sitio para mejorar su contenido y usabilidad (analítica agregada, no individual).</li>
+      </ul>
+      <p>No utilizamos tus datos para toma de decisiones automatizadas ni elaboración de perfiles con efectos jurídicos.</p>
+    </section>
+
+    <section class="pp-section" id="newsletter">
+      <h2><span class="num">04</span> Newsletter y email marketing</h2>
+      <p>La suscripción al newsletter es completamente <strong>voluntaria</strong>. Al suscribirte aceptás recibir comunicaciones periódicas sobre contenido clínico, novedades y ofertas de cursos.</p>
+      <p>Podés <strong>darte de baja en cualquier momento</strong> enviando una solicitud a <a href="mailto:ricardodfrusso@gmail.com">ricardodfrusso@gmail.com</a>.</p>
+      <p>El formulario de suscripción es procesado a través de <strong>Formspree</strong>, servicio de gestión de formularios con sede en EE.UU. Podés consultar su política en <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
+      <div class="pp-callout">
+        El cupón de descuento <strong>FRUSSO20</strong> otorgado al suscribirte es de uso personal e intransferible, y aplica únicamente a inscripciones en cursos PIT organizados por el Dr. Frusso.
+      </div>
+    </section>
+
+    <section class="pp-section" id="terceros">
+      <h2><span class="num">05</span> Terceros y encargados de tratamiento</h2>
+      <p>Para operar el sitio trabajamos con los siguientes proveedores de servicios:</p>
+      <ul>
+        <li><strong>Formspree</strong> — procesamiento del formulario de suscripción al newsletter. <span class="pp-chip">formularios</span></li>
+        <li><strong>Vercel Inc.</strong> — hosting del sitio y analítica de uso agregada y anónima (Vercel Web Analytics). <span class="pp-chip">hosting · analítica</span></li>
+      </ul>
+      <p>No vendemos, alquilamos ni cedemos tu información a terceros con fines comerciales.</p>
+    </section>
+
+    <section class="pp-section" id="cookies">
+      <h2><span class="num">06</span> Cookies y tecnologías de rastreo</h2>
+      <p>El sitio utiliza únicamente:</p>
+      <ul>
+        <li><strong>Almacenamiento local funcional (localStorage):</strong> necesario para recordar que cerraste o completaste el popup del newsletter, evitando que vuelva a aparecer. No es una cookie de seguimiento y no requiere consentimiento.</li>
+        <li><strong>Vercel Web Analytics:</strong> mide visitas y rendimiento del sitio de forma agregada y anónima, sin usar cookies ni identificadores persistentes que permitan rastrearte entre sitios.</li>
+      </ul>
+      <p>Si en el futuro incorporamos herramientas adicionales de analítica o publicidad que utilicen cookies, actualizaremos esta sección antes de activarlas.</p>
+    </section>
+
+    <section class="pp-section" id="derechos">
+      <h2><span class="num">07</span> Tus derechos</h2>
+      <p>De acuerdo con la Ley 25.326, tenés derecho a:</p>
+      <ul>
+        <li><strong>Acceso:</strong> conocer qué datos tuyos tenemos almacenados.</li>
+        <li><strong>Rectificación:</strong> corregir datos inexactos o incompletos.</li>
+        <li><strong>Supresión:</strong> solicitar la eliminación de tus datos de nuestras bases.</li>
+        <li><strong>Confidencialidad:</strong> que tus datos sean tratados con la debida reserva.</li>
+        <li><strong>Oposición:</strong> oponerte al tratamiento de tus datos para fines de marketing directo.</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:ricardodfrusso@gmail.com">ricardodfrusso@gmail.com</a> con el asunto <strong>"Datos personales"</strong>. El equipo de Ricardo Frusso responderá dentro de los 5 días hábiles.</p>
+      <div class="pp-callout">
+        La Agencia de Acceso a la Información Pública (AAIP) es el organismo de control en Argentina. Podés presentar consultas o denuncias en <a href="https://www.argentina.gob.ar/aaip" target="_blank" rel="noopener">www.argentina.gob.ar/aaip</a>.
+      </div>
+    </section>
+
+    <section class="pp-section" id="seguridad">
+      <h2><span class="num">08</span> Seguridad de los datos</h2>
+      <p>Adoptamos medidas técnicas y organizativas razonables para proteger tus datos personales frente a accesos no autorizados, pérdida o alteración. Sin embargo, ninguna transmisión por internet es 100% segura.</p>
+      <p>En caso de detectar una brecha de seguridad que afecte tus datos, te notificaremos dentro de los plazos establecidos por la normativa aplicable.</p>
+    </section>
+
+    <section class="pp-section" id="cambios">
+      <h2><span class="num">09</span> Cambios en esta política</h2>
+      <p>Podemos actualizar esta política para reflejar cambios en nuestras prácticas o en la normativa. Cuando lo hagamos, actualizaremos la fecha de "Última actualización" al inicio del documento.</p>
+      <p>Si los cambios son significativos, te notificaremos por email (si sos suscriptor) o mediante un aviso visible en el sitio.</p>
+    </section>
+
+    <section class="pp-section" id="contacto">
+      <h2><span class="num">10</span> Contacto</h2>
+      <p>Para cualquier consulta sobre esta política o sobre el tratamiento de tus datos personales:</p>
+      <p><strong>Equipo Dr. Ricardo D. Frusso</strong><br><a href="mailto:ricardodfrusso@gmail.com">ricardodfrusso@gmail.com</a></p>
+      <p>El equipo responde en un plazo máximo de <strong>5 días hábiles</strong>.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="pp-footer">
+  <span>© 2026 Dr. Ricardo D. Frusso — Todos los derechos reservados</span>
+  <a href="/">drricardofrusso.com</a>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.pp-section[id]');
+  const tocLinks  = document.querySelectorAll('.pp-toc-list a');
+  const observer  = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.pp-toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
